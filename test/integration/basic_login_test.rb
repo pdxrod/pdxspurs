@@ -12,15 +12,15 @@ class BasicLoginTest < ActionDispatch::IntegrationTest
   end
   
   def test_should_log_in
-
+    
     get '/'
-    assert response.body.include?(       'Log in' )
-    assert_false response.body.include?( 'Log out' )
+    assert response.body.include?(          'Log in' )
+    assert false == response.body.include?( 'Log out' )
     fill_in 'user_session_email', :with => @user.email
     fill_in 'user_session_password', :with => User::VALID_PASSWORD
     click_link "Log in"
-    assert response.body.include?(       'Log out' )
-    assert_false response.body.include?( 'Log in' )
+    assert response.body.include?(          'Log out' )
+    assert false == response.body.include?( 'Log in' )
 
   end
 

@@ -1,8 +1,18 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
-require 'webrat'
 require 'factory_girl'
+require 'authlogic'
+require "authlogic/test_case"
+include Authlogic::TestCase
+activate_authlogic
+
+require 'webrat'
+require 'webrat/core/matchers'
+include Webrat::Methods
+Webrat.configure do |config|
+  config.mode = :rails
+end
 
 class ActiveSupport::TestCase
 
