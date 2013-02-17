@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 
   # The capcha word in the image file shown on the signup page to prevent spider spam bot script kiddie trolls 
   attr_accessor :secret_word
-
+  validates_format_of :email, :with => EMAIL_REG, :message => "I don't think that's a valid e-mail address"
 
 end
 
