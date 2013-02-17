@@ -11,7 +11,7 @@ require 'webrat'
 require 'webrat/core/matchers'
 include Webrat::Methods
 Webrat.configure do |config|
-  config.mode = :rails
+  config.mode = :rack # not :rails - http://paikialog.wordpress.com/2012/02/11/webrat-no-such-file-to-load-action_controllerintegration/
 end
 
 class ActiveSupport::TestCase
