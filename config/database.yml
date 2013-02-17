@@ -16,7 +16,7 @@ production:
   adapter: mysql
   database: subcrypt_pdxspursproduction
   username: subcrypt_pdxspur
-  password: knucklef!$t
+  password: 
   host: localhost
   encoding: utf8
 
