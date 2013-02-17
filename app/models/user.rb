@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   PUNCTUATION = '!@#$%^&*()_+-=<>.{}[]|'
   VALID_CHARS = UPPER + LOWER + NUMBERS + PUNCTUATION
 
+  has_and_belongs_to_many :roles
+
   # The capcha word in the image file shown on the signup page to prevent spider spam bot script kiddie trolls 
   attr_accessor :secret_word
   validates_format_of :email, :with => EMAIL_REG, :message => "I don't think that's a valid e-mail address"

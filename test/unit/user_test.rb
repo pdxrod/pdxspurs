@@ -15,7 +15,8 @@ class UserTest < ActiveSupport::TestCase
     r = Role.count
     u = user.roles.size
     role = Role.new( { :rolename => User::ADMIN } )
-    assert_equal r + 1, Rold.count
+    role.save!
+    assert_equal r + 1, Role.count
     user.roles << role
     assert_equal u + 1, user.roles.size
   end
