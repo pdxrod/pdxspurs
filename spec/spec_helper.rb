@@ -26,6 +26,12 @@ RSpec.configure do |config|
 
 end
 
+def create_user( email )
+  User.create( { :email => email, :password => User::VALID_PASSWORD, 
+                     :password_confirmation => User::VALID_PASSWORD,
+                               :secret_word => User::SECRET } )
+end
+
 def register_user( word, num, success_wanted ) # Does successful and unsuccessful new user registrations
   visit '/logout'
   n = User.count

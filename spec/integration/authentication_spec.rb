@@ -5,7 +5,10 @@ describe "authlogic" do
   before(:each) do
     User.delete_all
 
-    2.times { FactoryGirl.create( :user ) }
+    2.times do
+      email = 'me' + Time.now.to_f.to_s.gsub( '.', 'x' ) + '@pdxspurs.com'
+      create_user email
+    end
 
     visit '/logout'
   end
@@ -19,6 +22,7 @@ describe "authlogic" do
     end
     n = User.count
     register_user( User::INVALID_EMAIL_PASSWORD_OR_SECRET, n, false )
+
   end
 
   it "should not register new user with invalid password" do
