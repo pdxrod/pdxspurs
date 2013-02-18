@@ -4,8 +4,8 @@ Pdxspurs::Application.routes.draw do
 
   root :to =>           'main#index'
   
-  get    'login' =>     'user_sessions#new',     :as => :login
-  delete 'logout' =>    'user_sessions#destroy', :as => :logout
+  get 'login' =>     'user_sessions#new',     :as => :login
+  get 'logout' =>    'user_sessions#destroy', :as => :logout
 
 end
 

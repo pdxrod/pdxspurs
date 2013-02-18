@@ -20,6 +20,16 @@ class ApplicationController < ActionController::Base
     admin
   end
 
+  def require_user
+    unless current_user
+      store_location
+      flash[:notice] = MUST_BE_USER
+      redirect_to new_user_session_url
+      false
+    end
+    true
+  end
+
   def require_no_user
     if current_user
       store_location
@@ -31,7 +41,7 @@ class ApplicationController < ActionController::Base
   end
 
   def store_location
-    session[:return_to] = request.request_uri
+#    session[:return_to] = request.request_uri
   end
 
   def redirect_back_or_default(default)
