@@ -1,0 +1,58 @@
+<%= form_for(@user) do |f| %>
+
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %><br/>
+    <% if what == 'edit' %>
+       <b><%= @user.email %></b>
+    <% else %>
+       <%= f.text_field :email %>
+    <% end %>
+
+  </div>
+
+  <div class="field">
+    <br/>
+    <% if what == 'edit' %>
+        <%= f.label :old_password %><br/>
+        <%= f.password_field :old_password %>
+       </div>
+       <div class="field">
+        <%= f.label :new_password %><br/>
+    <% else %>
+      <%= f.label :password %><br/>
+    <% end %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Password again" %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <% unless what == 'edit' %>
+    <div class="field">
+    <br/>
+    <img src='/images/word<%= rand(10) %>.jpg' />
+     <p><label for="secret_word">Enter the letters and numbers in the picture (case insensitive)</label><br/>
+     <%= f.text_field :secret_word %></p>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <br/>
+    <%= f.submit CLICK_HERE %>
+    <br/>
+  </div>
+
+  <br/>
+<% end %>
+
+
+
+
