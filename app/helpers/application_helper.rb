@@ -1,5 +1,5 @@
 FLASH_SPAN = '<span style="color: #F94909; font-size: 15px;">'
-FAKES_LINK = '<br/>'
+POSTS_LINK = '<br/>'
 ENDOF_SPAN = '</span><br/>'
 LONG_WORDS = "Not signed up: Email should look like an email address., Email can't be blank, Email is invalid, " +
              "Password is too short (minimum is 4 characters), Password doesn't match confirmation, Password must " +
@@ -8,11 +8,139 @@ LONG_WORDS = "Not signed up: Email should look like an email address., Email can
 MULTI_LINE = (LONG_WORDS.size.to_f / 2.8)
 
 LOGIN_BUTTON = "Click to log in"
+SAVE_BUTTON = " Save "
+CLICK_HERE = " Click here "
+SEARCH_BUTTON = " Then click here "
+MUST_BE_USER = "You must be logged in to access the page you tried to see" # Don't say anything about 'administrator'
+MUST_BE_ADMIN = MUST_BE_USER
+SMALL = 50
+LARGE = 250
+URL_SIZE = 200
+TEXT_FIELD_SIZE = 128
+NUM_PER_PAGE = 37
+MAX_MEDIA = 25
+DATE_REG = /^[A-Z][a-z].+ [0-9]+.+[0-9].+$/
+INT_DATE_MSG = "(yyyy-mm-dd)"
+USA_DATE_MSG = "(mm/dd/yyyy)"
+
+class Hash
+
+  def revert
+    hash_new = Hash.new
+    self.each { |key, value|
+      if not hash_new.has_key?(key) then
+        hash_new[value] = key
+      end
+    }
+    return hash_new
+  end
+
+
+  @@hash = { }
+  def squish( n = 0 )
+    @@hash = { } if n == 0
+    each do |k, v|
+      if v.is_a? Hash
+        v.squish( n + 1 )
+      else
+        @@hash[ k ] = v
+      end
+    end
+    @@hash 
+  end
+
+end
+
+class String
+
+  def short
+    num = SMALL / 2
+    return self if self.size < num
+    self[ 0 .. num-1 ] + '...'
+  end
+
+  def shuffle
+    m = []
+    u = ''
+
+    until u.size == self.size
+      n = rand(self.size)
+      unless m.include? n
+        m << n
+        u << self[n]
+      end
+    end
+
+    u
+  end
+
+  def shuffle!
+    u = self.shuffle
+    u.size.times { |t| self[t..t] = u[t..t] }
+  end
+
+# http://stackoverflow.com/questions/862140/hex-to-binary-in-ruby
+  def hex_2_bin
+    raise "Empty string is not a valid hexadecimal number" if self.size < 1
+    hex = self.upcase.split( '' )
+    hex.each { |ch| raise "#{self} is not a hexadecimal number" unless "ABCDEF0123456789".include? ch }
+    hex = self.upcase
+    hex = '0' + hex if((hex.length & 1) != 0)
+    hex.scan(/../).map{ |b| b.to_i(16) }.pack('C*')
+  end
+
+  def bin_2_hex
+    self.unpack('C*').map{ |b| "%02X" % b }.join('')
+  end
+
+  def to_b # || ! to_b 
+    return nil if self.strip.empty?
+    return false if self.downcase.starts_with? 'f'
+    return false if self == '0' # the opposite of Ruby
+    return true if self.downcase.starts_with? 't'
+    return true if self == '1'
+    nil
+  end
+
+end
+
+class NilClass
+  def short
+    self
+  end
+
+  def to_b
+    false
+  end
+end
+
+def can_change?( model ) # e.g. was this report entered by this user or admin? (otherwise they can't edit or delete it)
+  return false unless current_user
+  return true if current_user.admin?
+  id = (model.class == User ? model.id : model.user_id) # Users don't have user ids, they just have ids, coz they're users
+  id == current_user.id
+end
+
+def can_delete?( model )
+  return false unless current_user
+  current_user.admin?
+end
+
+def flash_errs( model )
+  if model.errors.empty?
+    errs = ''
+  else
+    errs = model.errors.full_messages.join(', ')
+  end
+
+  flash[:notice] = errs
+  errs
+end
 
 def flash_format( notice )
   flash = notice
   if flash.blank?
-    flash = FAKES_LINK
+    flash = POSTS_LINK
   else
     flash = FLASH_SPAN + flash + ENDOF_SPAN
   end
@@ -21,7 +149,6 @@ def flash_format( notice )
   flash += "<br/>\n" * (size - 1)
   flash
 end
-
 
 module ApplicationHelper
 
