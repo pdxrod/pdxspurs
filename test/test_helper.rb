@@ -14,10 +14,12 @@ Webrat.configure do |config|
   config.mode = :rack # not :rails - http://paikialog.wordpress.com/2012/02/11/webrat-no-such-file-to-load-action_controllerintegration/
 end
 
+JUANDE = 'juande@spurs.co.uk'
+
 class ActiveSupport::TestCase
 
   def create_user(options = {}) 
-    User.create( { :email => 'juande@spurs.co.uk', :password => User::VALID_PASSWORD, :password_confirmation => User::VALID_PASSWORD, 
+    User.create( { :email => JUANDE, :password => User::VALID_PASSWORD, :password_confirmation => User::VALID_PASSWORD, 
                    :secret_word => User::SECRET }.merge( options ) )    
   end
 
