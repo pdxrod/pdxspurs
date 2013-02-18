@@ -38,6 +38,7 @@ end
 group :development, :test do
   gem 'webrat', '0.7.3' 
   gem 'factory_girl_rails', '4.2.1'
+  gem 'rspec-rails', '2.12.2'
 end
 
 gem 'jquery-rails', '2.2.0'
