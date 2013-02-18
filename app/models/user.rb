@@ -25,6 +25,12 @@ class User < ActiveRecord::Base
   attr_accessor :secret_word
   validates_format_of :email, :with => EMAIL_REG, :message => "I don't think that's a valid e-mail address"
 
+  def User.find_by_persistence_token( *args )
+    p = args[ 0 ]
+    users = User.find_by_sql( "select * from users where persistence_token = '#{p}'" )
+    users[ 0 ]
+  end
+
 end
 
 
