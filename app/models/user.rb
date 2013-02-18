@@ -25,10 +25,18 @@ class User < ActiveRecord::Base
   attr_accessor :secret_word
   validates_format_of :email, :with => EMAIL_REG, :message => "I don't think that's a valid e-mail address"
 
-  def User.find_by_persistence_token( *args )
-    p = args[ 0 ]
-    users = User.find_by_sql( "select * from users where persistence_token = '#{p}'" )
+  # Overcomes 'wrong no. of arguments' error in Rails 4 beta
+  def User.find_by( column, value )
+    users = User.find_by_sql( "select * from users where #{column} = '#{value}'" )
     users[ 0 ]
+  end
+
+  def User.find_by_id( *args )
+    User.find_by( 'id', *args[ 0 ] )
+  end
+
+  def User.find_by_persistence_token( *args )
+    User.find_by( 'persistence_token', *args[ 0 ] ) 
   end
 
 end
