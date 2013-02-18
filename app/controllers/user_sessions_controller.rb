@@ -1,4 +1,5 @@
 class UserSessionsController < ApplicationController
+
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => :destroy
   before_filter :require_admin, :only => :index
@@ -33,10 +34,11 @@ class UserSessionsController < ApplicationController
     @user_session.destroy
    
     respond_to do |format|
-      format.html { redirect_to('/', :notice => 'See you next time') }
+      format.html { redirect_to('/', :notice => '') }
       format.xml  { head :ok }
     end
   end
+
 end
 
 

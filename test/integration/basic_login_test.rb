@@ -22,7 +22,7 @@ class BasicLoginTest < ActionDispatch::IntegrationTest
     fill_in 'user_session_email', :with => @user.email
     fill_in 'user_session_password', :with => User::VALID_PASSWORD
     click_button LOGIN_BUTTON      
-    assert response.body.include?(          'Log out')
+    raise response.body unless response.body.include?('Log out')
     assert false == response.body.include?( 'Log in' )
 
   end

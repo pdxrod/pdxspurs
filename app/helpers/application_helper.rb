@@ -7,6 +7,8 @@ LONG_WORDS = "Not signed up: Email should look like an email address., Email can
              "is too short (minimum is 4 characters), Secret word - '' is not valid - try again"
 MULTI_LINE = (LONG_WORDS.size.to_f / 2.8)
 
+LOGIN_BUTTON = "Click to log in"
+
 def flash_format( notice )
   flash = notice
   if flash.blank?

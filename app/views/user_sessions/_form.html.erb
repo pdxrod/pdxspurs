@@ -1,0 +1,49 @@
+<% if @user_session %>
+  <%= form_for(@user_session) do |f| %>
+
+  <% if @user_session.errors.any? %>
+    <div id="error_explanation">
+
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <% if what == 'edit' %>
+      <%= f.label :new_password %><br/>
+    <% else %>
+      <%= f.label :password %><br/>
+    <% end %>
+    <%= f.password_field :password %>
+  </div>
+
+  <% unless what == 'new' %>
+    <div class="field">
+      <%= f.label "Password again" %><br />
+      <%= f.password_field :password_confirmation %>
+    </div> 
+  
+    <div class="field">
+    <br/>
+    <img src='/images/word<%= rand(10) %>.jpg' />
+     <p><label for="secret_word">Enter the letters and numbers in the picture (case insensitive)</label><br/>
+     <%= f.text_field :secret_word %></p>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <br/>
+    <%= f.submit LOGIN_BUTTON %>
+    <br/>
+  </div>
+
+  <br/>
+  <% end %>
+<% end %>
+
+
+
