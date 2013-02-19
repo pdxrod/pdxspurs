@@ -44,11 +44,11 @@ class ListsController < ApplicationController
       format.html
       format.xml  { render :xml => @list }
     end
+
   end
 
   def edit
     @list = current_user.lists.find(params[:id])
-
   end
 
   def create

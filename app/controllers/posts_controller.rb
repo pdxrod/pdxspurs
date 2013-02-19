@@ -48,12 +48,11 @@ class PostsController < ApplicationController
 
   def edit
     @post = current_user.posts.find(params[:id])
-
   end
 
   def create
 
-    @post = current_user.posts.create( app_params ) # app_params is a private method: see below - it's a new thing in Rails 4
+    @post = current_user.posts.create( app_params ) 
 
     respond_to do |format|
       if @post.save
@@ -96,7 +95,7 @@ class PostsController < ApplicationController
  private
 
   def app_params
-    params.require(:post).permit(:title, :user_id, :updated_at, :created_at)
+    params.require(:post).permit(:title, :message, :list_id, :user_id, :post_id, :image, :width, :height, :updated_at, :created_at)
   end
 
 end
