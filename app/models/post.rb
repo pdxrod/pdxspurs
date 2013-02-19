@@ -8,6 +8,10 @@ class Post < ActiveRecord::Base
   belongs_to :list  
   validates_length_of :title, :within => 1..TITLE_LENGTH
 
+  def post # Parent post - this is a comment on another post
+    (post_id.nil?? nil : Post.find( post_id ))
+  end
+
   def length
     return '' if height.nil?
     return (height.to_f / 3.to_f).to_i.to_s
