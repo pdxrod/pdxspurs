@@ -1,3 +1,17 @@
+module ActiveRecord
+  class Base
+  # Overcomes 'wrong no. of arguments' error in Rails 4 beta
+    def Base.find_by( column, value )
+      table = name.downcase.pluralize
+      cLass = name.constantize
+      results = cLass.find_by_sql( "select * from #{table} where #{column} = '#{value}'" )
+      return nil if results.size < 1
+      raise "#{column} = '#{value}' is not unique in #{table}" if results.size > 1
+      results[ 0 ]
+    end
+  end
+end
+
 FLASH_SPAN = '<span style="color: #F94909; font-size: 15px;">'
 POSTS_LINK = '<br/>'
 ENDOF_SPAN = '</span><br/>'

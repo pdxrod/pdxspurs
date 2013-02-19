@@ -1,3 +1,5 @@
+require File.dirname( __FILE__ ) + '/../helpers/application_helper'
+
 class User < ActiveRecord::Base
 
   acts_as_authentic do |c|
@@ -25,14 +27,12 @@ class User < ActiveRecord::Base
   attr_accessor :secret_word
   validates_format_of :email, :with => EMAIL_REG, :message => "I don't think that's a valid e-mail address"
 
-  # Overcomes 'wrong no. of arguments' error in Rails 4 beta
-  def User.find_by( column, value )
-    users = User.find_by_sql( "select * from users where #{column} = '#{value}'" )
-    users[ 0 ]
-  end
-
   def User.find_by_id( *args )
     User.find_by( 'id', *args[ 0 ] )
+  end
+
+  def User.find_by_email( *args )
+    User.find_by( 'email', *args[ 0 ] )
   end
 
   def User.find_by_persistence_token( *args )
