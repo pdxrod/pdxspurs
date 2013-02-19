@@ -56,9 +56,9 @@ def register_user( word, num, success_wanted ) # Does successful and unsuccessfu
 
   visit '/posts/new'
   if success_wanted
-    response.should be_success
+    response.body.include?( 'name="post[title]"' ).should be_true
   else
-    response.should_not be_success 
+    response.body.include?( 'name="post[title]"' ).should be_false
   end
 end
 

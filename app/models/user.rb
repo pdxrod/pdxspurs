@@ -26,6 +26,15 @@ class User < ActiveRecord::Base
   # The capcha word in the image file shown on the signup page 
   attr_accessor :secret_word
   validates_format_of :email, :with => EMAIL_REG, :message => "I don't think that's a valid e-mail address"
+  validate            :secret_word_validation
+
+  def secret_word_validation
+    if secret_word.nil? or ( not( WORDS.include?( secret_word.downcase )))
+      @errors.add( :secret_word, " - '#{ secret_word }' is not valid - try again" )
+      return false
+    end
+    true
+  end
 
   def name_display
     name = email.dup.downcase
