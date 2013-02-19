@@ -34,11 +34,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.create( app_params )  
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to('/', :notice => "You are now signed up and logged on as #{ @user.email }") }
+        format.html { redirect_to('/', :notice => "You are now signed up and logged on as #{ @user.name_display }") }
         format.xml { render :xml => @user, :status => :created, :location => @user }
       else
         errs = 'Not signed up: ' + flash_errs( @user )
@@ -85,6 +85,12 @@ class UsersController < ApplicationController
       end
     end
   end
+
+ private
+  def app_params
+    params.require(:user).permit( :email, :password, :password_confirmation, :secret_word, :updated_at, :created_at )
+  end
+
 
 end
 

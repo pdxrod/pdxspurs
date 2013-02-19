@@ -23,9 +23,17 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :roles
 
-  # The capcha word in the image file shown on the signup page to prevent spider spam bot script kiddie trolls 
+  # The capcha word in the image file shown on the signup page 
   attr_accessor :secret_word
   validates_format_of :email, :with => EMAIL_REG, :message => "I don't think that's a valid e-mail address"
+
+  def name_display
+    name = email.dup.downcase
+    name.gsub!( '@', ' at ' )
+    n = name.rindex( '.' )
+    name = name[ 0 .. n - 1 ] unless n.nil?
+    name	  
+  end
 
   def User.find_by_id( *args )
     User.find_by( 'id', *args[ 0 ] )
