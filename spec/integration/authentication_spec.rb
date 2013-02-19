@@ -74,5 +74,41 @@ describe "authlogic" do
     User.count.should == n
   end
 
+  it "should log on" do
+    user = User.last
+    user.admin?.should be_false
+    visit '/login'
+    fill_in "user_session_email", :with => user.email 
+    fill_in "user_session_password", :with => User::VALID_PASSWORD
+    click_button LOGON_BUTTON
+    get '/posts/new'
+    response.body.include?( 'name="post[title]"' ).should be_true # You are on the new message form
+    response.body.include?( MUST_BE_USER ).should be_false # The error message saying you need to be logged in
+  end
+
+  it "should not log on with invalid password" do
+    user = User.last
+    user.admin?.should be_false
+    visit '/login'
+    fill_in "user_session_email", :with => user.email 
+    fill_in "user_session_password", :with => User::INVALID_EMAIL_PASSWORD_OR_SECRET
+    click_button LOGON_BUTTON
+    get '/posts/new'
+    response.body.include?( 'name="post[title]"' ).should be_false
+    response.body.include?( MUST_BE_USER ).should be_true
+  end
+
+  it "should not log on with invalid email" do
+    user = User.last
+    user.admin?.should be_false
+    visit '/login'
+    fill_in "user_session_email", :with => User::INVALID_EMAIL_PASSWORD_OR_SECRET
+    fill_in "user_session_password", :with => User::VALID_PASSWORD
+    click_button LOGON_BUTTON
+    get '/posts/new'
+    response.body.include?( 'name="post[title]"' ).should be_false
+    response.body.include?( MUST_BE_USER ).should be_true
+  end
+
 end
 
