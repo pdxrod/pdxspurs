@@ -1,4 +1,4 @@
-class CreateListsAndPosts < ActiveRecord::Migration  
+class CreatePostsAndLists < ActiveRecord::Migration  
   
   def self.up  
 
