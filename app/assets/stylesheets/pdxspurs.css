@@ -70,34 +70,21 @@ padding-left: 1em;
 }
 
 #pdxspurs-list .list-line-even {
-background: #f0f0f0;
+background:  #FFFFFF; 
 }
 
 #pdxspurs-list .list-line-odd {
-background: #d0d0d0;
+background: #8FFFE4; 
 }
 
 #home-link {
 }
 
-a:link { 
-	color: #002388;
-}
-	
-a:visited { 
-	color: #000388;
-}
-	
-a:hover { 
-	color: #000fff;
-	background-color: #0f0f0f;
-	text-decoration: none;
-}
-	
-a:active { 
-	color: #001388;
-}
-		
+A:link {text-decoration: underline;  color: #099F09; }
+A:visited {text-decoration: none;    color: #009909; } 
+A:active {text-decoration: none;     color: #909F90; }
+A:hover {text-decoration: underline; color: #496781; }
+
 table {
   width: 95%;
   margin-left: auto;
