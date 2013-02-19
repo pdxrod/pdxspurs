@@ -21,18 +21,18 @@ LONG_WORDS = "Not signed up: Email should look like an email address., Email can
              "is too short (minimum is 4 characters), Secret word - '' is not valid - try again"
 MULTI_LINE = (LONG_WORDS.size.to_f / 2.8)
 
-LOGIN_BUTTON = "Click to log in"
+LOGIN_BUTTON = " Click to log in "
 SAVE_BUTTON = " Save "
 CLICK_HERE = " Click here "
 SEARCH_BUTTON = " Then click here "
-MUST_BE_USER = "You must be logged in to access the page you tried to see" # Don't say anything about 'administrator'
-MUST_BE_ADMIN = MUST_BE_USER
+SIGNUP_BUTTON = " Fill in the form and click here "
+MUST_BE_USER = "You must be logged in to access the page you tried to see" 
+MUST_BE_ADMIN = MUST_BE_USER # Don't say anything about 'administrator'
 SMALL = 50
 LARGE = 250
 URL_SIZE = 200
 TEXT_FIELD_SIZE = 128
 NUM_PER_PAGE = 37
-MAX_MEDIA = 25
 DATE_REG = /^[A-Z][a-z].+ [0-9]+.+[0-9].+$/
 INT_DATE_MSG = "(yyyy-mm-dd)"
 USA_DATE_MSG = "(mm/dd/yyyy)"
