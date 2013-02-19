@@ -25,17 +25,22 @@ LOGIN_BUTTON = " Click to log in "
 SAVE_BUTTON = " Save "
 CLICK_HERE = " Click here "
 SEARCH_BUTTON = " Then click here "
-SIGNUP_BUTTON = " Fill in the form and click here "
+SIGNUP_BUTTON = " Click here "
 MUST_BE_USER = "You must be logged in to access the page you tried to see" 
 MUST_BE_ADMIN = MUST_BE_USER # Don't say anything about 'administrator'
 SMALL = 50
 LARGE = 250
 URL_SIZE = 200
 TEXT_FIELD_SIZE = 128
-NUM_PER_PAGE = 37
-DATE_REG = /^[A-Z][a-z].+ [0-9]+.+[0-9].+$/
+NUM_PER_PAGE = (ENV['RAILS_ENV'] == 'production' ? 51 : 7) 
+DATE_REG = /\A[A-Z][a-z].+ [0-9]+.+[0-9].\Z/
 INT_DATE_MSG = "(yyyy-mm-dd)"
 USA_DATE_MSG = "(mm/dd/yyyy)"
+TITLE_LENGTH = 75
+TITLE_REG = /[^A-Za-z0-9]/
+MSG_MIN = 20
+MSG_MED = 40 
+MSG_MAX = MSG_MIN * MSG_MED
 
 class Hash
 
@@ -165,6 +170,12 @@ def flash_format( notice )
 end
 
 module ApplicationHelper
+
+  def date_string(date_time)
+    str = date_time.month.to_s
+    str = '0' + str if str.length < 2
+    str + '/' + date_time.day.to_s + '/' + date_time.year.to_s
+  end
 
 end
 

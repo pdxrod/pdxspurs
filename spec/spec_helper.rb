@@ -43,7 +43,6 @@ def register_user( word, num, success_wanted ) # Does successful and unsuccessfu
   fill_in "user_password", :with => User::VALID_PASSWORD
   fill_in "user_password_confirmation", :with => User::VALID_PASSWORD
   fill_in "user_secret_word", :with => word
-
   click_button SIGNUP_BUTTON      # Registering successfully logs you in
   if success_wanted
     User.count.should == num + 1
