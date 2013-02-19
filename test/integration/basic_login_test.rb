@@ -12,9 +12,7 @@ class BasicLoginTest < ActionDispatch::IntegrationTest
    
     @user = create_user
     assert @user.email == JUANDE
-    users = User.find_by_sql( "select distinct * from users where email = '#{JUANDE}'" )
-    assert users.size == 1
-    @user = users[ 0 ]
+    @user = User.find_by_email( JUANDE )
     assert @user.email == JUANDE
    
     visit '/' 
