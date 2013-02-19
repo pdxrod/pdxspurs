@@ -38,7 +38,7 @@ describe "authlogic" do
     fill_in "user_password_confirmation", :with => User::INVALID_EMAIL_PASSWORD_OR_SECRET
     fill_in "user_secret_word", :with => User::SECRET
 
-    click_button CLICK_HERE
+    click_button SIGNUP_BUTTON
     User.count.should == n
   end
 
@@ -55,7 +55,7 @@ describe "authlogic" do
     fill_in "user_password_confirmation", :with => User::VALID_PASSWORD + '!'
     fill_in "user_secret_word", :with => User::SECRET
 
-    click_button CLICK_HERE
+    click_button SIGNUP_BUTTON 
     User.count.should == n
   end
 
@@ -70,7 +70,7 @@ describe "authlogic" do
     fill_in "user_password_confirmation", :with => User::VALID_PASSWORD
     fill_in "user_secret_word", :with => User::SECRET
 
-    click_button CLICK_HERE
+    click_button SIGNUP_BUTTON 
     User.count.should == n
   end
 
