@@ -67,8 +67,8 @@ function hide_menu(named)
 
 <% for post in @posts %>
   <tr valign="top" class="<%= cycle('list-line-odd', 'list-line-even') %>">
+
     <td><%=h post.list.title_display %></td>
-   
     <td><%=h post.user.name_display %></td>
     <td><%=h post.date_display %></td>
     
@@ -98,5 +98,5 @@ onmouseout="hide_menu( 'picpopup' );"><%=h post.title %></a>
 
 </div>
 
-
+<%= link_to "Add message", {:controller => 'lists', :action => 'index'}%>
 

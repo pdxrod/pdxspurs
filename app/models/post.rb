@@ -1,8 +1,4 @@
-require File.dirname( __FILE__ ) + '/../helpers/application_helper'
-
 class Post < ActiveRecord::Base
-
-  include ApplicationHelper
 
   belongs_to :user
   belongs_to :list  
