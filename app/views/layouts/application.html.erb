@@ -13,13 +13,12 @@
 
           <%= current_user.name_display %> |
           <%= link_to "Log out", :logout, :method => :delete %> | <a href="/">Home</a> | <a href="/posts">Messages</a> |
-          <%= link_to( "News", '/news' ) %> | 
           <%= link_to "Change password", edit_user_path(current_user.id)%>
 
     <% else -%>
     
           <%= link_to "Log in", :login %> | <a href="/">Home</a> | <a href="/posts">Messages</a> |
-          <%= link_to( "News", '/news' ) %> | <%= link_to "Join this site", new_user_path %> |
+          <%= link_to "Join this site", new_user_path %> |
           <%= link_to "Forgot password?", '/password_resets/new' %>
 
     <% end -%>
