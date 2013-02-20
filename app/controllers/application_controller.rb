@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user_session, :current_user
 
+  GUARDIAN_API_KEY = 'djpscrgpj5bcvse97bkbnhxv'
+
   def require_admin
     user = (! current_user.nil?)
     admin = false

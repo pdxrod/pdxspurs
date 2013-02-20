@@ -1,2 +1,19 @@
+&nbsp;&nbsp;<%= raw NEWS_TITLE %>
+
+<div id="pdxspurs-list">	
+
+<fieldset>
+<table>
+<% for item in guardian_results %>
+  <tr valign="top" class="<%= cycle('list-line-odd', 'list-line-even') %>">
+    <td><%= raw item %></td>
+  </tr>
+<% end %>
+</table>
+</fieldset>
+
+</div>
+
+<hr/>
 
 

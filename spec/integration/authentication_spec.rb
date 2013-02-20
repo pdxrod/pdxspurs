@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "authlogic" do
+describe "authentication" do
 
   before(:each) do
     User.delete_all

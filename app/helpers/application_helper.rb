@@ -21,6 +21,7 @@ LONG_WORDS = "Not signed up: Email should look like an email address., Email can
              "is too short (minimum is 4 characters), Secret word - '' is not valid - try again"
 MULTI_LINE = (LONG_WORDS.size.to_f / 2.8)
 
+NEWS_TITLE = '<b>The latest news from</b> <a href="http://www.guardian.co.uk/open-platform">the Guardian open platform Ruby API</a>'
 LOGIN_BUTTON = " Click to log in "
 SAVE_BUTTON = " Save "
 CLICK_HERE = " Click here "
@@ -178,6 +179,10 @@ module ApplicationHelper
     str = date_time.month.to_s
     str = '0' + str if str.length < 2
     str + '/' + date_time.day.to_s + '/' + date_time.year.to_s
+  end
+
+  def guardian_results
+    Guardian::results
   end
 
 end
