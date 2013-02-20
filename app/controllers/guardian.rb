@@ -25,7 +25,7 @@ class Guardian
   end
   
   def Guardian.results
-        url = "http://content.guardianapis.com/search?q=Tottenham&format=json&api-key=" +
+        url = "http://content.guardianapis.com/search?q=Tottenham&page-size=#{PAGE_SIZE}&format=json&api-key=" +
          ApplicationController::GUARDIAN_API_KEY
 
 	uri = URI.parse(url)

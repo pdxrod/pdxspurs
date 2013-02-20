@@ -39,6 +39,7 @@ NUM_PER_PAGE = (ENV['RAILS_ENV'] == 'production' ? 51 : 7)
 DATE_REG = /\A[A-Z][a-z].+ [0-9]+.+[0-9].\Z/
 INT_DATE_MSG = "(yyyy-mm-dd)"
 USA_DATE_MSG = "(mm/dd/yyyy)"
+PAGE_SIZE = 20
 TITLE_LENGTH = 75
 TITLE_REG = /[^A-Za-z0-9]/
 MSG_WIDTH = 60
