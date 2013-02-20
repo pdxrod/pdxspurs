@@ -6,9 +6,11 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :list  
+  validates_presence_of :user
+  validates_presence_of :list
   validates_length_of :title, :within => 1..TITLE_LENGTH
 
-  def post # Parent post - this is a comment on another post
+  def post # If this post has a parent post, it is a comment on that post
     (post_id.nil?? nil : Post.find( post_id ))
   end
 
@@ -28,7 +30,7 @@ class Post < ActiveRecord::Base
   end  
   
   def self.per_page
-    25 # Used by will_paginate to decide how many to show per page
+    NUM_PER_PAGE # Used by will_paginate to decide how many to show per page
   end
   
   def date_display
