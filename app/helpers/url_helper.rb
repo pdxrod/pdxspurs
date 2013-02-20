@@ -1,5 +1,19 @@
 module UrlHelper
 
+  HREF = 'href'
+  BEGIN_HREF = '<a href="'
+  OTHER_HREF = "<a href='"
+  MIDDLE_HREF = '">'
+  END_HREF = "</a>"
+  HTTP = "http://"
+  PROTOCOL = "://"
+  OBJECT = '<object'
+  DOT = '.'
+  SLASH = '/'
+  ATSIGN = '@'
+  ENDINGS = ['com', 'org', 'info', 'edu', 'uk', 'au', 'tv', 'gov', 'es', 'za',
+  'coop', 'mil', 'biz', 'nz', 'us', 'net', 'il', 'it', 'ps', 'pn', 'de', 'fr']
+
   def link(msg)
     str = msg.downcase
     return msg unless str.index( OBJECT ).nil?
@@ -28,11 +42,6 @@ module UrlHelper
     str
   end
   
-  DOT = '.'
-  SLASH = '/'
-  ATSIGN = '@'
-  ENDINGS = ['com', 'org', 'info', 'edu', 'uk', 'au', 'tv', 'gov', 'es', 'za',
-  'coop', 'mil', 'biz', 'nz', 'us', 'net', 'il', 'it', 'ps', 'pn', 'de', 'fr']
   def needs_urling?(str)
     return false if str.nil?
     return false if str.blank?

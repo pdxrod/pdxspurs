@@ -18,6 +18,7 @@ describe "home" do
     fill_in "user_session_password", :with => User::VALID_PASSWORD
     click_button LOGIN_BUTTON
     get '/'
+    response.body.include?( user.name_display ).should be_true
     response.body.include?( NEWS_TITLE ).should be_true
   end
 

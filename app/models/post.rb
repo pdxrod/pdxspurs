@@ -65,15 +65,6 @@ class Post < ActiveRecord::Base
     'by ' + user.name_display
   end
 
-  HREF = 'href'
-  BEGIN_HREF = '<a href="'
-  OTHER_HREF = "<a href='"
-  MIDDLE_HREF = '">'
-  END_HREF = "</a>"
-  HTTP = "http://"
-  PROTOCOL = "://"
-  OBJECT = '<object'
-
  private 
 
  require File.dirname( __FILE__ ) + '/../helpers/url_helper'

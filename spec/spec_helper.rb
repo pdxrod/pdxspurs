@@ -81,4 +81,9 @@ def sign_up_user( *users )
   User.find_by_email user.email
 end
 
+def random_message
+  str = User::UPPER + User::PUNCTUATION + (' ' * 16)
+  str.shuffle
+end
+
 

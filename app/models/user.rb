@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
   VALID_CHARS = UPPER + LOWER + NUMBERS + PUNCTUATION
 
   has_and_belongs_to_many :roles
+  has_many :lists
+  has_many :posts
 
   # The capcha word in the image file shown on the signup page 
   attr_accessor :secret_word
