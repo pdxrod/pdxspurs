@@ -80,7 +80,7 @@ describe "authlogic" do
     visit '/login'
     fill_in "user_session_email", :with => user.email 
     fill_in "user_session_password", :with => User::VALID_PASSWORD
-    click_button LOGON_BUTTON
+    click_button LOGIN_BUTTON
     get '/posts/new'
     response.body.include?( 'name="post[title]"' ).should be_true # You are on the new message form
     response.body.include?( MUST_BE_USER ).should be_false # The error message saying you need to be logged in
@@ -92,7 +92,7 @@ describe "authlogic" do
     visit '/login'
     fill_in "user_session_email", :with => user.email 
     fill_in "user_session_password", :with => User::INVALID_EMAIL_PASSWORD_OR_SECRET
-    click_button LOGON_BUTTON
+    click_button LOGIN_BUTTON
     get '/posts/new'
     response.body.include?( 'name="post[title]"' ).should be_false
     response.body.include?( MUST_BE_USER ).should be_true
@@ -104,7 +104,7 @@ describe "authlogic" do
     visit '/login'
     fill_in "user_session_email", :with => User::INVALID_EMAIL_PASSWORD_OR_SECRET
     fill_in "user_session_password", :with => User::VALID_PASSWORD
-    click_button LOGON_BUTTON
+    click_button LOGIN_BUTTON
     get '/posts/new'
     response.body.include?( 'name="post[title]"' ).should be_false
     response.body.include?( MUST_BE_USER ).should be_true

@@ -56,6 +56,19 @@ class User < ActiveRecord::Base
     User.find_by( 'persistence_token', *args[ 0 ] ) 
   end
 
+  def User.admin!
+    User.all.each do |user|
+      user.roles.each do |role|
+        return user if role.rolename == User::ADMIN 
+      end
+    end
+    nil
+  end
+
+  def admin?
+    self == User.admin!
+  end
+
 end
 
 
