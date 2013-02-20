@@ -30,14 +30,13 @@ class PostsController < ApplicationController
   end
 
   def new
-params.recurse!
     list_id = params[ 'l' ].to_i
     redirect_to '/lists' and return if list_id < 1 # Nil or complete garbage .to_i is 0 (e.g. /posts/new?l=foobar)
     @post = Post.new
     @post.list_id = list_id
     @post.user_id = current_user.id
-    @post.post_id = params[ 'p' ]
-                                   
+    @post.post_id = params[ 'p' ]                  
+                 
     respond_to do |format|
       format.html
       format.xml  { render :xml => @post }
@@ -51,6 +50,9 @@ params.recurse!
 
   def create
 
+    params.recurse!
+    params[ :list_id ] = params[ 'l' ]
+    params[ :post_id ] = params[ 'p' ]
     @post = current_user.posts.create( app_params ) 
 
     respond_to do |format|
