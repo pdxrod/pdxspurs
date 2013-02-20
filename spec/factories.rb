@@ -8,24 +8,23 @@ FactoryGirl.define do
     "me" + "#{Time.now.to_f.to_s.gsub( '.', '1' )}".shuffle + "@pdxspurs.com"
   end
 
-  factory :user, :class => User do
+  factory :user do
     email { generate( :email_address ) }
     secret_word User::SECRET
     password User::VALID_PASSWORD
     password_confirmation User::VALID_PASSWORD
   end
 
-  factory :role, :class => Role do
-    user
+  factory :role do
     rolename { generate( :word ) } 
   end
 
-  factory :admin, :parent => :role do
+  factory :admin, :class => Role do
     rolename User::ADMIN
     users { [ create( :user ) ] }
   end
 
-  factory :list, :class => List do
+  factory :list do
     title { generate( :word ) }
     user
   end
