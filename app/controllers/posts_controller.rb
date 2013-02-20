@@ -50,7 +50,6 @@ class PostsController < ApplicationController
 
   def create
 
-    params.recurse!
     params[ :list_id ] = params[ 'l' ]
     params[ :post_id ] = params[ 'p' ]
     @post = current_user.posts.create( app_params ) 
