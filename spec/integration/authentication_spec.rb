@@ -81,8 +81,8 @@ describe "authentication" do
     fill_in "user_session_email", :with => user.email 
     fill_in "user_session_password", :with => User::VALID_PASSWORD
     click_button LOGIN_BUTTON
-    get '/posts/new'
-    response.body.include?( 'name="post[title]"' ).should be_true # You are on the new message form
+    get '/lists/new'
+    response.body.include?( 'name="list[title]"' ).should be_true # You are on the new thread form
     response.body.include?( 'user_sessions/new' ).should be_false # Message saying you are being redirected to login page
   end
 
@@ -93,8 +93,8 @@ describe "authentication" do
     fill_in "user_session_email", :with => user.email 
     fill_in "user_session_password", :with => User::INVALID_EMAIL_PASSWORD_OR_SECRET
     click_button LOGIN_BUTTON
-    get '/posts/new'
-    response.body.include?( 'name="post[title]"' ).should be_false
+    get '/lists/new'
+    response.body.include?( 'name="list[title]"' ).should be_false
     raise response.body unless response.body.include?( 'user_sessions/new' )
   end
 
@@ -105,10 +105,12 @@ describe "authentication" do
     fill_in "user_session_email", :with => User::INVALID_EMAIL_PASSWORD_OR_SECRET
     fill_in "user_session_password", :with => User::VALID_PASSWORD
     click_button LOGIN_BUTTON
-    get '/posts/new'
-    response.body.include?( 'name="post[title]"' ).should be_false
+    get '/lists/new'
+    response.body.include?( 'name="list[title]"' ).should be_false
     response.body.include?( 'user_sessions/new' ).should be_true
   end
 
 end
+
+
 

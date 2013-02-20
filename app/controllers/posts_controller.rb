@@ -31,15 +31,17 @@ class PostsController < ApplicationController
 
   def new
 
-    redirect_to '/lists' and return if params[:list_id].blank? 
+    list_id = params[ 'l' ].to_i
+    redirect_to '/lists' and return if list_id < 1 # Nil or complete garbage .to_i is 0
     @post = Post.new
+    @post.list_id = list_id
     @post.user_id = current_user.id
-    @post.list_id = params[:list_id].to_i
                                    
     respond_to do |format|
       format.html
       format.xml  { render :xml => @post }
     end
+
   end
 
   def edit

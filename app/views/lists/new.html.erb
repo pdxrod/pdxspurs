@@ -2,7 +2,7 @@
 <fieldset>
   <p>
     <b>Title</b><br />
-    <%= f.text_field :title, "maxlength" => 40 %>
+    <%= f.text_field :title, "maxlength" => TITLE_LENGTH %>
   </p>
   
     <%= f.hidden_field :user_id %>
@@ -13,5 +13,4 @@
 </fieldset>
 <% end %>
 
-<%=  render :partial => 'partials/links', :locals => {:context => 'list'}  %>
 
