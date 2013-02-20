@@ -30,7 +30,7 @@ class PostsController < ApplicationController
   end
 
   def new
-
+params.recurse!
     list_id = params[ 'l' ].to_i
     redirect_to '/lists' and return if list_id < 1 # Nil or complete garbage .to_i is 0 (e.g. /posts/new?l=foobar)
     @post = Post.new

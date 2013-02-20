@@ -5,7 +5,7 @@ Message:<br/>
 <br/><br/>
 
 <% if @post.post_id.nil? %>
-  <a href="<%= "/posts/new?l=#{ @post.list_id }&p=#{ @post.post_id }" %>"><%= COMMENT %></a>
+  <a href="<%= "/posts/new?l=#{ @post.list_id }&p=#{ @post.id }" %>"><%= COMMENT %></a>
 <% end %>
 
 

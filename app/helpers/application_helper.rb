@@ -61,6 +61,28 @@ class Hash
     return hash_new
   end
 
+  KEYS = ['-', '=', '~', '_', '+', '#']
+  def recurse(pr=false, n=0, key='')
+    str = "\n"
+    spaces = ' ' * 2 * (1 + n)
+    each do |k, v|
+      if v.is_a? Hash
+        str += v.recurse(pr, n + 1, k)
+      else
+        s = "#{k}"
+        s = ":#{s}" if k.is_a? Symbol
+        pointer = KEYS[ n % KEYS.size ]
+        first = (key == '' ? '' : "#{key} #{pointer}>")
+        str += "#{spaces}#{first} #{s} #{pointer}> #{v}"
+      end
+    end
+    puts str + "\n" if (n == 0) and pr
+    str
+  end
+
+  def recurse!
+    recurse true
+  end
 
   @@hash = { }
   def squish( n = 0 )
