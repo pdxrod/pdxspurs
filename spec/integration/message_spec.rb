@@ -23,11 +23,12 @@ describe "messages" do
 
     n = Post.count
     visit '/posts/new'
+
     fill_in 'post_title', :with => title
     fill_in 'post_message', :with => msg
     click_button CREATE_BUTTON
-    
     Post.count.should == n + 1
+
 
   end
 

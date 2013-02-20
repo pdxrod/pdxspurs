@@ -1,0 +1,17 @@
+<%= form_for(@list) do |f| %>
+<fieldset>
+  <p>
+    <b>Title</b><br />
+    <%= f.text_field :title, "maxlength" => 40 %>
+  </p>
+  
+    <%= f.hidden_field :user_id %>
+  
+  <p>
+    <%= f.submit "  Create thread  " %>
+  </p>
+</fieldset>
+<% end %>
+
+<%=  render :partial => 'partials/links', :locals => {:context => 'list'}  %>
+

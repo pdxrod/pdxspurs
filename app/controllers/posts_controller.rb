@@ -31,7 +31,7 @@ class PostsController < ApplicationController
 
   def new
 
-    redirect_to '/posts' and return if params[:list_id].blank? 
+    redirect_to '/lists' and return if params[:list_id].blank? 
     @post = Post.new
     @post.user_id = current_user.id
     @post.list_id = params[:list_id].to_i
