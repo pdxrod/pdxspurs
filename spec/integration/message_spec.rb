@@ -54,5 +54,53 @@ describe "messages" do
 
   end
 
+  it "should allow user to comment on a message" do
+
+    user = User.last
+    other = User.all[ 1 ]
+    user.admin?.should be_false
+    other.admin?.should be_false
+    (user == other).should be_false
+
+    msg = ''
+    3.times { msg += FactoryGirl.generate( :word ) + ' ' } 
+    title = User::LOWER.shuffle 
+
+    visit '/login'
+    fill_in "user_session_email", :with => user.email 
+    fill_in "user_session_password", :with => User::VALID_PASSWORD
+    click_button LOGIN_BUTTON
+
+    n = Post.count    
+    visit '/lists'
+    click_link ADD_MESSAGE
+    fill_in 'post_title', :with => title
+    fill_in 'post_message', :with => msg
+    click_button CREATE_BUTTON
+    parent = Post.last
+    visit '/logout'
+ 
+    visit '/login'
+    fill_in "user_session_email", :with => other.email 
+    fill_in "user_session_password", :with => User::VALID_PASSWORD
+    click_button LOGIN_BUTTON
+    
+    visit '/posts'
+    click_link title
+    click_link COMMENT
+    title.shuffle!
+    msg.shuffle!
+    fill_in 'post_title', :with => title
+    fill_in 'post_message', :with => msg
+    click_button CREATE_BUTTON
+    Post.count.should == n + 2
+    comment = Post.find_by_post_id( parent.id ) # id is the id of the comment's parent post
+    comment.title.should == title
+    comment.user_id.should == other.id
+    parent.user_id.should == user.id
+
+  end
+
+
 end
 

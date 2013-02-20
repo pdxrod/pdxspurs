@@ -22,6 +22,7 @@ LONG_WORDS = "Not signed up: Email should look like an email address., Email can
 MULTI_LINE = (LONG_WORDS.size.to_f / 2.8)
 
 ADD_MESSAGE = "Add message to this thread"
+COMMENT = "Comment on this message"
 NEWS_TITLE = '<b>The latest football news from</b> <a href="http://www.guardian.co.uk/open-platform">the Guardian open platform Ruby API</a>'
 LOGIN_BUTTON = " Click to log in "
 SAVE_BUTTON = " Save "
@@ -30,7 +31,7 @@ SEARCH_BUTTON = " Then click here "
 SIGNUP_BUTTON = " Click here "
 CREATE_BUTTON = " Create "
 MUST_BE_USER = "You must be logged in to access the page you tried to see" 
-MUST_BE_ADMIN = MUST_BE_USER # Don't say anything about 'administrator'
+MUST_BE_ADMIN = "Administrators only" 
 SMALL = 50
 LARGE = 250
 URL_SIZE = 200
