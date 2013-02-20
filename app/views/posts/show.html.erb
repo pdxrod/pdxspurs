@@ -1,0 +1,12 @@
+Title: <%= @post.title %>
+<br/><br/>
+Message:<br/>
+<%= @post.message %>
+<br/><br/>
+
+<% if @post.post_id.nil? %>
+  <a href="<%= "/posts/new?l=#{ @post.list_id }&p=#{ @post.post_id }" %>"><%= COMMENT %></a>
+<% end %>
+
+
+

@@ -73,7 +73,7 @@ function hide_menu(named)
     <td><%=h post.date_display %></td>
     
     <td>
-      <a href="/posts/<%= post.id %>" 
+      <a href="<%= post.edit_or_view( current_user ) %>" 
         onmouseover="display_menu( this, 'picpopup', '<%= post.image %>', <%= post.length %> );" 
         onmouseout="hide_menu( 'picpopup' );"><%=h post.title %></a>
     </td>

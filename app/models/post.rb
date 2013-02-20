@@ -8,6 +8,17 @@ class Post < ActiveRecord::Base
   validates_presence_of :list_id
   validates_length_of :title, :within => 1..TITLE_LENGTH
 
+  def Post.find_by_post_id( *args )
+    Post.find_by( "post_id", *args[ 0 ] )
+  end
+
+  def edit_or_view( current_user )
+    if current_user.admin? or current_user == user
+      return "/posts/#{ id }/edit"
+    end
+    "/posts/#{ id }"
+  end
+
   def post # If this post has a parent post, it is a comment on that post
     (post_id.nil?? nil : Post.find( post_id ))
   end

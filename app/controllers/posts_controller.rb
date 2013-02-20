@@ -36,6 +36,7 @@ class PostsController < ApplicationController
     @post = Post.new
     @post.list_id = list_id
     @post.user_id = current_user.id
+    @post.post_id = params[ 'p' ]
                                    
     respond_to do |format|
       format.html
@@ -62,6 +63,7 @@ class PostsController < ApplicationController
         format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
       end
     end
+
   end
 
   def update

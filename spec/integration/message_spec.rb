@@ -82,6 +82,7 @@ describe "messages" do
     click_button CREATE_BUTTON
     Post.all.each { |p| p.user_id.should_not be_nil }
     parent = Post.last
+    parent.title.should == title
     visit '/logout'
  
     visit '/login'
@@ -103,6 +104,11 @@ describe "messages" do
     comment.title.should == title
     comment.user_id.should == other.id
     parent.user_id.should == user.id
+
+    visit "/posts/#{ comment.id }" # You can't comment on a comment
+    response.body.include?( COMMENT ).should be_false
+    visit "/posts/#{ comment.id }/edit"
+    response.body.include?( COMMENT ).should be_false 
 
   end
 
