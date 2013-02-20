@@ -3,6 +3,8 @@ require 'spec_helper'
 describe "admin" do
 
   before(:each) do
+    FactoryGirl.create :administrator
+    2.times { FactoryGirl.create :user }
     2.times { FactoryGirl.create :list }
     visit '/logout'
   end

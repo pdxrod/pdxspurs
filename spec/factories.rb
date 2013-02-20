@@ -15,6 +15,18 @@ FactoryGirl.define do
     password_confirmation User::VALID_PASSWORD
   end
 
+  factory :administrator, :parent => :user do
+  end
+
+  factory :role do
+    rolename { generate :word }
+  end
+
+  factory :admin, :parent => :role do
+    rolename User::ADMIN
+    users { [ create( :administrator ) ] }
+  end
+
   factory :list do
     title { generate( :word ) }
     user

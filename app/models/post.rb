@@ -4,8 +4,8 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :list  
-  validates_presence_of :user
-  validates_presence_of :list
+  validates_presence_of :user_id
+  validates_presence_of :list_id
   validates_length_of :title, :within => 1..TITLE_LENGTH
 
   def post # If this post has a parent post, it is a comment on that post

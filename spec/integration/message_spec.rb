@@ -3,6 +3,7 @@ require 'spec_helper'
 describe "messages" do
 
   before(:each) do
+    Post.delete_all
     2.times { FactoryGirl.create :list }
     email = 'me' + Time.now.to_f.to_s.gsub( '.', 'z' ) + '@pdxspurs.com'
     create_user email
@@ -51,6 +52,8 @@ describe "messages" do
     fill_in 'post_message', :with => msg
     click_button CREATE_BUTTON
     Post.count.should == n + 1
+    Post.last.user_id.should == user.id
+    Post.all.each { |p| p.user_id.should_not be_nil }
 
   end
 
@@ -77,6 +80,7 @@ describe "messages" do
     fill_in 'post_title', :with => title
     fill_in 'post_message', :with => msg
     click_button CREATE_BUTTON
+    Post.all.each { |p| p.user_id.should_not be_nil }
     parent = Post.last
     visit '/logout'
  
@@ -94,6 +98,7 @@ describe "messages" do
     fill_in 'post_message', :with => msg
     click_button CREATE_BUTTON
     Post.count.should == n + 2
+    Post.all.each { |p| p.user_id.should_not be_nil }
     comment = Post.find_by_post_id( parent.id ) 
     comment.title.should == title
     comment.user_id.should == other.id
@@ -101,6 +106,6 @@ describe "messages" do
 
   end
 
-
 end
+
 

@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
   ADMIN = "administrator"
   ADMIN_EMAIL = ADMIN + "@pdxspurs.com"
   VALID_PASSWORD = "Mathieu1!"
-#  CRYPTED_PASSWORD = "a5298bd02390f6ad9c312141c1fe823d7c1382f878b323e9f45d467ffe1842b887b18ff18e72246628993edc653ab121b7505627c5d758296bd625a0a5eab8b9"
   SECRET = 'cheese'
   INVALID_EMAIL_PASSWORD_OR_SECRET = 'foo'
   MSG = " must have an upper and lower case letter and a number, and may have punctuation"
@@ -44,6 +43,10 @@ class User < ActiveRecord::Base
     n = name.rindex( '.' )
     name = name[ 0 .. n - 1 ] unless n.nil?
     name	  
+  end
+
+  def name
+    name_display.split( ' ' )[ 0 ]
   end
 
   def User.find_by_id( *args )
