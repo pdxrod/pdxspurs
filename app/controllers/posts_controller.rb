@@ -26,13 +26,13 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = current_user.posts.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def new
 
     list_id = params[ 'l' ].to_i
-    redirect_to '/lists' and return if list_id < 1 # Nil or complete garbage .to_i is 0
+    redirect_to '/lists' and return if list_id < 1 # Nil or complete garbage .to_i is 0 (e.g. /posts/new?l=foobar)
     @post = Post.new
     @post.list_id = list_id
     @post.user_id = current_user.id

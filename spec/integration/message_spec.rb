@@ -56,7 +56,7 @@ describe "messages" do
 
   it "should allow user to comment on a message" do
 
-    user = User.last
+    user = User.all[ -1 ]
     other = User.all[ 1 ]
     user.admin?.should be_false
     other.admin?.should be_false
@@ -94,7 +94,7 @@ describe "messages" do
     fill_in 'post_message', :with => msg
     click_button CREATE_BUTTON
     Post.count.should == n + 2
-    comment = Post.find_by_post_id( parent.id ) # id is the id of the comment's parent post
+    comment = Post.find_by_post_id( parent.id ) 
     comment.title.should == title
     comment.user_id.should == other.id
     parent.user_id.should == user.id
