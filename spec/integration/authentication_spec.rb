@@ -83,7 +83,7 @@ describe "authlogic" do
     click_button LOGIN_BUTTON
     get '/posts/new'
     response.body.include?( 'name="post[title]"' ).should be_true # You are on the new message form
-    response.body.include?( MUST_BE_USER ).should be_false # The error message saying you need to be logged in
+    response.body.include?( 'user_sessions/new' ).should be_false # Message saying you are being redirected to login page
   end
 
   it "should not log on with invalid password" do
@@ -95,7 +95,7 @@ describe "authlogic" do
     click_button LOGIN_BUTTON
     get '/posts/new'
     response.body.include?( 'name="post[title]"' ).should be_false
-    response.body.include?( MUST_BE_USER ).should be_true
+    raise response.body unless response.body.include?( 'user_sessions/new' )
   end
 
   it "should not log on with invalid email" do
@@ -107,7 +107,7 @@ describe "authlogic" do
     click_button LOGIN_BUTTON
     get '/posts/new'
     response.body.include?( 'name="post[title]"' ).should be_false
-    response.body.include?( MUST_BE_USER ).should be_true
+    response.body.include?( 'user_sessions/new' ).should be_true
   end
 
 end
