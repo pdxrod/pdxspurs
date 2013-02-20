@@ -51,11 +51,11 @@ function hide_menu(named)
 
 <table>
   <tr>
-    <th>Thread</th>
-    <th>Who</th>
-    <th>When</th>
-    <th>Title</th>
-    <th>Message</th>
+    <th align='left'>Thread</th>
+    <th align='left'>Who</th>
+    <th align='left'>When</th>
+    <th align='left'>Title</th>
+    <th align='left'>Message</th>
     <th>&nbsp;</th>
     <th>&nbsp;</th>
   </tr>
@@ -73,11 +73,11 @@ function hide_menu(named)
     <td><%=h post.date_display %></td>
     
     <td>
-      <a href="/<%= post.url_title %>" 
-onmouseover="display_menu( this, 'picpopup', '<%= post.image %>', <%= post.length %> );" 
-onmouseout="hide_menu( 'picpopup' );"><%=h post.title %></a>
+      <a href="/posts/<%= post.id %>" 
+        onmouseover="display_menu( this, 'picpopup', '<%= post.image %>', <%= post.length %> );" 
+        onmouseout="hide_menu( 'picpopup' );"><%=h post.title %></a>
     </td>
-    <td><%=h post.short  %></td>
+    <td><%=h post.short %></td>
    
   <% if post.user_id == current_user.id %>
     <td><%= link_to 'edit', edit_post_path(post) %></td>

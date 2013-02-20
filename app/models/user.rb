@@ -71,6 +71,10 @@ class User < ActiveRecord::Base
     self == User.admin!
   end
 
+  def guest?
+    false
+  end
+
 end
 
 
