@@ -21,6 +21,7 @@ LONG_WORDS = "Not signed up: Email should look like an email address., Email can
              "is too short (minimum is 4 characters), Secret word - '' is not valid - try again"
 MULTI_LINE = (LONG_WORDS.size.to_f / 2.8)
 
+ADD_MESSAGE = "Add message to this thread"
 NEWS_TITLE = '<b>The latest football news from</b> <a href="http://www.guardian.co.uk/open-platform">the Guardian open platform Ruby API</a>'
 LOGIN_BUTTON = " Click to log in "
 SAVE_BUTTON = " Save "

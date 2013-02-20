@@ -6,7 +6,7 @@
 <% for list in @lists %>
   <tr valign="top" class="<%= cycle('list-line-odd', 'list-line-even') %>">
     <td><%=h list.title %></td>
-    <td><a href="/posts/new?l=<%=h( list.id.to_s ) %>">Add message to this thread</a></td>
+    <td><a href="/posts/new?l=<%=h( list.id.to_s ) %>"><%= ADD_MESSAGE %></a></td>
      </tr>
 <% end %>
 

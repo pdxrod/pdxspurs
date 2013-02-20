@@ -54,11 +54,11 @@ def register_user( word, num, success_wanted ) # Does successful and unsuccessfu
     response.body.include?( '"/login"' ).should be_true
   end
 
-  visit '/posts/new'
+  visit '/lists/new'
   if success_wanted
-    response.body.include?( 'name="post[title]"' ).should be_true
+    response.body.include?( 'name="list[title]"' ).should be_true
   else
-    response.body.include?( 'name="post[title]"' ).should be_false
+    response.body.include?( 'name="list[title]"' ).should be_false
   end
 end
 

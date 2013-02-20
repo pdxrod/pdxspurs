@@ -15,6 +15,11 @@ FactoryGirl.define do
     password_confirmation User::VALID_PASSWORD
   end
 
+  factory :list do
+    title { generate( :word ) }
+    user
+  end
+
 end
 
 
