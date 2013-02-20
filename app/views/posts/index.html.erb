@@ -77,7 +77,7 @@ function hide_menu(named)
 onmouseover="display_menu( this, 'picpopup', '<%= post.image %>', <%= post.length %> );" 
 onmouseout="hide_menu( 'picpopup' );"><%=h post.title %></a>
     </td>
-    <td><%=h post.message_display  %></td>
+    <td><%=h post.short  %></td>
    
   <% if post.user_id == current_user.id %>
     <td><%= link_to 'edit', edit_post_path(post) %></td>

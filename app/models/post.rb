@@ -1,5 +1,7 @@
 class Post < ActiveRecord::Base
 
+  include ApplicationHelper
+
   belongs_to :user
   belongs_to :list  
   validates_presence_of :user
@@ -22,7 +24,7 @@ class Post < ActiveRecord::Base
   end
   
   def url_title
-    'posts/' + title.gsub( TITLE_REG, '-' ).downcase + '-' + user.post_display    
+    'posts/' + title.gsub( TITLE_REG, '-' ).downcase + '-' + user.name_display    
   end  
   
   def self.per_page
@@ -30,7 +32,7 @@ class Post < ActiveRecord::Base
   end
   
   def date_display
-    d = date_string(created_at)
+    date_string(created_at)
   end
 
   def message=(msg)   
