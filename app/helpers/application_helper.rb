@@ -13,12 +13,12 @@ module ActiveRecord
 end
 
 FLASH_SPAN = '<span style="color: #F94909; font-size: 15px;">'
-POSTS_LINK = '<br/>'
+POSTS_LINK = '<div style="text-align: center;"><img src="/assets/spurs6.gif" /></div>'
 ENDOF_SPAN = '</span><br/>'
 LONG_WORDS = "Not signed up: Email should look like an email address., Email can't be blank, Email is invalid, " +
              "Password is too short (minimum is 4 characters), Password doesn't match confirmation, Password must " +
              "have an upper and lower case letter and a number, and may have punctuation, Password confirmation " +
-             "is too short (minimum is 4 characters), Secret word - '' is not valid - try again"
+             "is too short (minimum is 4 characters), Secret word - '' is not valid - try again" * 2
 MULTI_LINE = (LONG_WORDS.size.to_f / 2.8)
 
 ADD_BUTTON = " add "
