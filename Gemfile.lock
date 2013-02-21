@@ -1,10 +1,4 @@
 GIT
-  remote: git://github.com/markmcspadden/active_record_deprecated_finders.git
-  revision: a1fb905511eedf6415738e311721fc53128a6236
-  specs:
-    active_record_deprecated_finders (0.0.1)
-
-GIT
   remote: git://github.com/rails/arel.git
   revision: 80f11e342d00a2177dd8e5684914855b87771c5b
   specs:
@@ -179,7 +173,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_record_deprecated_finders!
   arel!
   authlogic (= 3.2.0)
   coffee-rails!

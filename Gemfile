@@ -14,7 +14,7 @@ gem 'railties',  path: File.join( ENV['RAILS_ROOT'], 'railties' )
 gem 'journey',   github: 'rails/journey'
 gem 'arel',      github: 'rails/arel'
 # gem 'active_record_deprecated_finders', github: 'rails/active_record_deprecated_finders'
-gem 'active_record_deprecated_finders',  github: 'markmcspadden/active_record_deprecated_finders'
+# gem 'active_record_deprecated_finders',  github: 'markmcspadden/active_record_deprecated_finders'
 
 gem 'will_paginate', '~> 3.0'
 gem 'hpricot', '0.8.6'
