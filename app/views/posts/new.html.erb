@@ -15,7 +15,7 @@
 <%= form_for(@post) do |f| %>
 <fieldset>
   <p>
-    <b><%= @post.post.nil?? '' : @post.post.title %></b><br/>
+    <b><%= @post.post.nil?? '' : @post.post.title %></b><br/><br/>
     <b>title</b><br />
     <%= f.text_field :title, "maxlength" => TITLE_LENGTH %>
   </p>

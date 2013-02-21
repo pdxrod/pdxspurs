@@ -3,7 +3,6 @@ class PostsController < ApplicationController
   before_filter :require_user
 
   def save
-
     params.each do |k, v|
       if v.nil?
         @post = Post.find( params[:id] )
@@ -16,7 +15,6 @@ class PostsController < ApplicationController
   end
 
   def index
-
     @posts = Post.find(:all)
 
     respond_to do |format|
@@ -30,6 +28,7 @@ class PostsController < ApplicationController
   end
 
   def new
+
     list_id = params[ 'l' ].to_i
     redirect_to '/lists' and return if list_id < 1 # Nil or complete garbage .to_i is 0 (e.g. /posts/new?l=foobar)
     @post = Post.new
@@ -53,7 +52,7 @@ class PostsController < ApplicationController
     params[ :list_id ] = params[ 'l' ]
     params[ :post_id ] = params[ 'p' ]
     @post = current_user.posts.create( app_params ) 
-
+app_params.recurse!
     respond_to do |format|
       if @post.save
   
@@ -80,6 +79,7 @@ class PostsController < ApplicationController
         format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
       end
     end
+
   end
 
   def destroy
@@ -91,6 +91,7 @@ class PostsController < ApplicationController
       format.html { redirect_to(posts_url) }
       format.xml  { head :ok }
     end
+
   end
 
  private
