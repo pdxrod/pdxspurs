@@ -16,7 +16,7 @@
     <td><% if current_user.admin? and (not user.admin?) %>
           <%=
            button_to "delete user", { :action => "destroy", :id => user.id },
-            :confirm => "Are you sure?", :method => :delete
+            :confirm => "are you sure you want to delete this user?", :method => :delete
            %>
         <% end %>
     </td>
@@ -24,9 +24,6 @@
  <% end %>
  </table>
 
- <br />
-
- <%= link_to 'New user', new_user_path %>
  <br/>
 
 <% end %>

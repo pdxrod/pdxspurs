@@ -23,7 +23,7 @@
   <p>
     <b>message:</b> 
     <br/>
-    <%= f.text_area :message, :value => @post.message %>
+    <%= f.text_area :message, {:size => "#{ MSG_WIDTH }x#{ MSG_HEIGHT }", :value => @post.message} %>
 
   </p>
   
@@ -36,6 +36,7 @@
 </fieldset>
 <% end %>
 
+<br/>
 <% if @post.post_id.nil? %>
   <a href="<%= "/posts/new?l=#{ @post.list_id }&p=#{ @post.id }" %>"><%= COMMENT %></a>
 <% end %>

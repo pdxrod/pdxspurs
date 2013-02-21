@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   acts_as_authentic do |c|
   end
 
+  before_destroy { raise "You cannot delete an administrator" if self.admin? }
+
   ADMIN = "administrator"
   ADMIN_EMAIL = ADMIN + "@pdxspurs.com"
   VALID_PASSWORD = "Mathieu1!"
@@ -38,6 +40,7 @@ class User < ActiveRecord::Base
   end
 
   def name_display
+    return '' if self.admin?
     name = email.dup.downcase
     name.gsub!( '@', ' at ' )
     n = name.rindex( '.' )
@@ -46,6 +49,7 @@ class User < ActiveRecord::Base
   end
 
   def name
+    return '' if self.admin?
     name_display.split( ' ' )[ 0 ]
   end
 

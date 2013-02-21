@@ -15,6 +15,10 @@
           <%= link_to "log out", :logout, :method => :delete %> | <a href="/">home</a> | <a href="/posts">messages</a> |
           <%= link_to "change password", edit_user_path(current_user.id)%>
 
+       <% if current_user.admin? %>
+          | <%= link_to "users", users_path %>
+       <% end %> 
+
     <% else -%>
     
           <%= link_to "log in", :login %> | <a href="/">home</a> | <a href="/posts">messages</a> |

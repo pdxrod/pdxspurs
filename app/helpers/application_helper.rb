@@ -21,16 +21,17 @@ LONG_WORDS = "Not signed up: Email should look like an email address., Email can
              "is too short (minimum is 4 characters), Secret word - '' is not valid - try again"
 MULTI_LINE = (LONG_WORDS.size.to_f / 2.8)
 
-ADD_MESSAGE = "Add message to this thread"
-COMMENT = "Comment on this message"
-NEWS_TITLE = '<b>The latest football news from</b> <a href="http://www.guardian.co.uk/open-platform">the Guardian open platform Ruby API</a>'
-LOGIN_BUTTON = " Click to log in "
-SAVE_BUTTON = " Save "
-CLICK_HERE = " Click here "
-SEARCH_BUTTON = " Then click here "
-SIGNUP_BUTTON = " Click here "
-CREATE_BUTTON = " Create "
-CREATE_THREAD = " Create new thread "
+ADD_BUTTON = " add "
+ADD_MESSAGE = "add message to this thread"
+COMMENT = "comment on this message"
+NEWS_TITLE = '<b>Football news from</b> <a href="http://www.guardian.co.uk/open-platform">the Guardian open platform Ruby API</a>'
+LOGIN_BUTTON = " click to log in "
+SAVE_BUTTON = " save "
+CLICK_HERE = " click here "
+SEARCH_BUTTON = " then click here "
+SIGNUP_BUTTON = " click here "
+CREATE_BUTTON = " create "
+CREATE_THREAD = " create new thread "
 MUST_BE_USER = "You must be logged in to access the page you tried to see" 
 MUST_BE_ADMIN = "Administrators only" 
 SMALL = 50
@@ -45,7 +46,7 @@ PAGE_SIZE = 20
 TITLE_LENGTH = 75
 TITLE_REG = /[^A-Za-z0-9]/
 MSG_WIDTH = 60
-MSG_HEIGHT = 30
+MSG_HEIGHT = 20
 MSG_MIN = 20
 MSG_MED = 40 
 MSG_MAX = MSG_MIN * MSG_MED
