@@ -52,7 +52,6 @@ class PostsController < ApplicationController
     params[ :list_id ] = params[ 'l' ]
     params[ :post_id ] = params[ 'p' ]
     @post = current_user.posts.create( app_params ) 
-app_params.recurse!
     respond_to do |format|
       if @post.save
   

@@ -65,8 +65,9 @@ describe "messages" do
     other.admin?.should be_false
     (user == other).should be_false
 
-    msg = ''
-    3.times { msg += FactoryGirl.generate( :word ) + ' ' } 
+    word = FactoryGirl.generate :word
+    msg = word
+    3.times { msg += ' ' + FactoryGirl.generate( :word ) } 
     title = User::LOWER.shuffle 
 
     visit '/login'
@@ -83,6 +84,8 @@ describe "messages" do
     Post.all.each { |p| p.user_id.should_not be_nil }
     parent = Post.last
     parent.title.should == title
+    response.body.include?( title ).should be_true
+    response.body.include?( word ).should be_true
     visit '/logout'
  
     visit '/login'
@@ -94,12 +97,15 @@ describe "messages" do
     click_link title
     click_link COMMENT
     title.shuffle!
-    msg.shuffle!
+    msg = (User::NUMBERS + User::UPPER).shuffle
     fill_in 'post_title', :with => title
     fill_in 'post_message', :with => msg
     click_button CREATE_BUTTON
     Post.count.should == n + 2
     Post.all.each { |p| p.user_id.should_not be_nil }
+    response.body.include?( title ).should be_true
+    response.body.include?( msg ).should be_true
+
     comment = Post.find_by_post_id( parent.id ) 
     comment.title.should == title
     comment.user_id.should == other.id
