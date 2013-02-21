@@ -169,6 +169,9 @@ describe "messages" do
     visit "/posts/#{ comment.id }/edit"
     response.body.include?( COMMENT ).should be_false 
 
+    visit "posts/#{ parent.id }" # The parent post should show its comments
+    response.body.include?( title ).should be_true
+
   end
 
 end

@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :list  
+  has_many :posts
   validates_presence_of :user_id
   validates_presence_of :list_id
   validates_presence_of :title

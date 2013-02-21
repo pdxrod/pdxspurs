@@ -77,6 +77,10 @@ background:  #FFFFFF;
 background: #8FFFE4; 
 }
 
+#comments {
+text-indent: 5em;
+}
+
 #home-link {
 }
 
