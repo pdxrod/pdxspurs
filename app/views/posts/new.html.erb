@@ -16,12 +16,12 @@
 <fieldset>
   <p>
     <b><%= @post.post.nil?? '' : @post.post.title %></b><br/><br/>
-    <b>title</b><br />
+    <b>title:</b><br />
     <%= f.text_field :title, "maxlength" => TITLE_LENGTH %>
   </p>
 
   <p>
-    <b>message</b> 
+    <b>message:</b> 
     <br/>
     <%= f.text_area :message, {:size => "#{ MSG_WIDTH }x#{ MSG_HEIGHT }"} %>
 

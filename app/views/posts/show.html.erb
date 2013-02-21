@@ -1,7 +1,7 @@
 <b>title:</b> <%= @post.title %>
 <br/><br/>
 <b>message:</b><br/>
-<%= @post.message %>
+<%= raw @post.message %>
 <br/><br/>
 
 <% if @post.post_id.nil? %>
