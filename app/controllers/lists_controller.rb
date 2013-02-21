@@ -25,16 +25,6 @@ class ListsController < ApplicationController
     end
   end
 
-  def show
-
-    @list = List.find(params[:id])
-
-    respond_to do |format|
-      format.html
-      format.xml  { render :xml => @list }
-    end
-  end
-
   def new
 
     @list = List.new
@@ -58,7 +48,7 @@ class ListsController < ApplicationController
     respond_to do |format|
       if @list.save
   
-        format.html { redirect_to(@list) }
+        format.html { redirect_to('/lists') }
         format.xml  { render :xml => @list, :status => :created, :location => @list }
       else
         format.html { render :action => "new" }

@@ -5,19 +5,21 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+
   <%= raw( flash_format( flash[ :notice ] ) ) %>
+
   <div id='nav'>
     <% if current_user -%>
 
           <%= current_user.name_display %> |
-          <%= link_to "Log out", :logout, :method => :delete %> | <a href="/">Home</a> | <a href="/posts">Messages</a> |
-          <%= link_to "Change password", edit_user_path(current_user.id)%>
+          <%= link_to "log out", :logout, :method => :delete %> | <a href="/">home</a> | <a href="/posts">messages</a> |
+          <%= link_to "change password", edit_user_path(current_user.id)%>
 
     <% else -%>
     
-          <%= link_to "Log in", :login %> | <a href="/">Home</a> | <a href="/posts">Messages</a> |
-          <%= link_to "Join this site", new_user_path %> |
-          <%= link_to "Forgot password?", '/password_resets/new' %>
+          <%= link_to "log in", :login %> | <a href="/">home</a> | <a href="/posts">messages</a> |
+          <%= link_to "join this site", new_user_path %> |
+          <%= link_to "forgot password?", '/password_resets/new' %>
 
     <% end -%>
   </div>

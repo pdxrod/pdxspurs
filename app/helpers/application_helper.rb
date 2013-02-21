@@ -30,6 +30,7 @@ CLICK_HERE = " Click here "
 SEARCH_BUTTON = " Then click here "
 SIGNUP_BUTTON = " Click here "
 CREATE_BUTTON = " Create "
+CREATE_THREAD = " Create new thread "
 MUST_BE_USER = "You must be logged in to access the page you tried to see" 
 MUST_BE_ADMIN = "Administrators only" 
 SMALL = 50
