@@ -15,7 +15,8 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.find(:all)
+    @posts = Post.all.reverse
+    @posts.delete_if { |post| post.post_id }
 
     respond_to do |format|
       format.html
@@ -44,7 +45,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = current_user.posts.find(params[:id])
+    if current_user.admin?
+      @post = Post.find( params[:id] )
+    else
+      @post = current_user.posts.find(params[:id])
+    end
   end
 
   def create
@@ -68,7 +73,12 @@ class PostsController < ApplicationController
 
   def update
 
-    @post = current_user.posts.find(params[:id])
+    if current_user.admin?
+      @post = Post.find( params[:id] )
+    else
+      @post = current_user.posts.find(params[:id])
+    end
+
     respond_to do |format|
       if @post.update_attributes(app_params)
 
@@ -85,7 +95,10 @@ class PostsController < ApplicationController
 
   def destroy
 
-    @post = current_user.posts.find(params[:id])
+    @post = nil
+    if current_user.admin?
+      @post = Post.find( params[:id] )
+    end # Blows up if anyone other than admin attempts to call this action
     @post.destroy
 
     respond_to do |format|

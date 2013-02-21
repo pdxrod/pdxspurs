@@ -2,23 +2,13 @@ class ListsController < ApplicationController
 
   before_filter :require_user
 
-  def save
-
-    params.each do |k, v|
-      if v.nil?
-        @list = List.find( params[:id] )
-        @list.title = k
-        @list.save!
-      end
-
-    end
-    render :text => "autosaved"
-
-  end
+  before_destroy { 
+   
+  }
 
   def index
 
-    @lists = List.find(:all)
+    @lists = List.all.reverse
 
     respond_to do |format|
       format.html
@@ -40,7 +30,11 @@ class ListsController < ApplicationController
   end
 
   def edit
-    @list = current_user.lists.find(params[:id])
+    if current_user.admin?
+      @list = List.find( params[:id] )
+    else
+      @list = current_user.lists.find(params[:id])
+    end
   end
 
   def create
@@ -49,7 +43,6 @@ class ListsController < ApplicationController
 
     respond_to do |format|
       if @list.save
-  
         format.html { redirect_to('/lists') }
         format.xml  { render :xml => @list, :status => :created, :location => @list }
       else
@@ -80,7 +73,10 @@ class ListsController < ApplicationController
 
   def destroy
 
-    @list = current_user.lists.find(params[:id])
+    @list = nil 
+    if current_user.admin?
+      @list = List.find( params[:id] )
+    end # Raises an exception if anyone other than admin tries to delete a thread
     @list.destroy
 
     respond_to do |format|

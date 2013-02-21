@@ -22,6 +22,7 @@ LONG_WORDS = "Not signed up: Email should look like an email address., Email can
 MULTI_LINE = (LONG_WORDS.size.to_f / 2.8)
 
 ADD_BUTTON = " add "
+MESSAGE_ADD = "add message"
 ADD_MESSAGE = "add message to this thread"
 COMMENT = "comment on this message"
 NEWS_TITLE = '<b>Football news from</b> <a href="http://www.guardian.co.uk/open-platform">the Guardian open platform Ruby API</a>'
