@@ -6,7 +6,9 @@ class Post < ActiveRecord::Base
   belongs_to :list  
   validates_presence_of :user_id
   validates_presence_of :list_id
+  validates_presence_of :title
   validates_length_of :title, :within => 1..TITLE_LENGTH
+  validates_presence_of :message
 
   def Post.find_by_post_id( *args )
     Post.find_by( "post_id", *args[ 0 ] )

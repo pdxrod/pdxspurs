@@ -2,6 +2,7 @@ class List < ActiveRecord::Base
 
   belongs_to :user
   has_many :posts
+  validates_presence_of :title
   validates_length_of :title, :within => 1..TITLE_LENGTH
   
   def title_display
