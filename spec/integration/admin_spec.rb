@@ -15,7 +15,9 @@ describe "admin" do
     user = User.admin!
     user.admin?.should be_true
 
-    visit '/users/new'
+    visit '/users'
+
+    
 
   end
 

@@ -58,6 +58,7 @@ class PostsController < ApplicationController
         format.html { redirect_to(@post) }
         format.xml  { render :xml => @post, :status => :created, :location => @post }
       else
+        flash[ :notice ] = @post.errors.full_messages.join( ' ' )
         format.html { render :action => "new" }
         format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
       end
@@ -74,6 +75,7 @@ class PostsController < ApplicationController
         format.html { redirect_to(@post) }
         format.xml  { head :ok }
       else
+        flash[ :notice ] = @post.errors.full_messages.join( ' ' )
         format.html { render :action => "edit" }
         format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
       end
@@ -100,3 +102,7 @@ class PostsController < ApplicationController
   end
 
 end
+
+
+
+

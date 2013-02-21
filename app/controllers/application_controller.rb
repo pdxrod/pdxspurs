@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   GUARDIAN_API_KEY = 'djpscrgpj5bcvse97bkbnhxv'
 
   def require_admin
+    flash[ :notice ] = '' 
     user = (! current_user.nil?)
     admin = false
     if user
@@ -23,6 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
+    flash[ :notice ] = '' 
     unless current_user
       store_location
       flash[:notice] = MUST_BE_USER
@@ -33,6 +35,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_no_user
+    flash[ :notice ] = '' 
     if current_user
       store_location
       flash[:notice] = ""

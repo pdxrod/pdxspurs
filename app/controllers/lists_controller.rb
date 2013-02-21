@@ -13,6 +13,7 @@ class ListsController < ApplicationController
 
     end
     render :text => "autosaved"
+
   end
 
   def index
@@ -23,6 +24,7 @@ class ListsController < ApplicationController
       format.html
       format.xml  { render :xml => @lists }
     end
+
   end
 
   def new
@@ -51,10 +53,12 @@ class ListsController < ApplicationController
         format.html { redirect_to('/lists') }
         format.xml  { render :xml => @list, :status => :created, :location => @list }
       else
+        flash[ :notice ] = @list.errors.full_messages.join( ' ' )
         format.html { render :action => "new" }
         format.xml  { render :xml => @list.errors, :status => :unprocessable_entity }
       end
     end
+
   end
 
   def update
@@ -66,10 +70,12 @@ class ListsController < ApplicationController
         format.html { redirect_to(@list) }
         format.xml  { head :ok }
       else
+        flash[ :notice ] = @list.errors.full_messages.join( ' ' )
         format.html { render :action => "edit" }
         format.xml  { render :xml => @list.errors, :status => :unprocessable_entity }
       end
     end
+
   end
 
   def destroy
@@ -81,6 +87,7 @@ class ListsController < ApplicationController
       format.html { redirect_to(lists_url) }
       format.xml  { head :ok }
     end
+
   end
 
  private
