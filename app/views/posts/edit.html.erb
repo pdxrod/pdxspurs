@@ -36,10 +36,20 @@
 </fieldset>
 <% end %>
 
-<br/>
+<br/><br/>
+
 <% if @post.post_id.nil? %>
+
   <a href="<%= "/posts/new?l=#{ @post.list_id }&p=#{ @post.id }" %>"><%= COMMENT %></a>
+  <br/><br/>
+
+  <b>comments</b>
+  <div id="comments">
+    <% @post.posts.each do |post| %>
+      <%= post.title %><br/>
+      <%= post.long %><br/><br/>
+    <% end %>
+  </div>
+
 <% end %>
-
-
 

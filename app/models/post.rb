@@ -42,7 +42,7 @@ class Post < ActiveRecord::Base
   end  
   
   def self.per_page
-    NUM_PER_PAGE # Used by will_paginate to decide how many to show per page
+    NUM_PER_PAGE 
   end
   
   def date_display
@@ -58,9 +58,18 @@ class Post < ActiveRecord::Base
   end
   
   def long
-    massage_message(nil, nil)
+    massage_message(MSG_MIN, MSG_MAX)
   end
-  
+   
+  def email_display
+    return '' if user.nil? 
+    return '' if user.guest?
+    return '' if user.admin?
+    'by ' + user.name_display
+  end
+
+ private 
+ 
   def massage_message(min, max)
     msg = message.gsub(/<[^>]*>/, '')
     msg = msg.gsub(/\&.*\;/, '      ')
@@ -72,17 +81,8 @@ class Post < ActiveRecord::Base
     msg  
   end
 
-  def email_display
-    return '' if user.nil? 
-    return '' if user.guest?
-    return '' if user.admin?
-    'by ' + user.name_display
-  end
-
- private 
-
- require File.dirname( __FILE__ ) + '/../helpers/url_helper'
- include UrlHelper
+  require File.dirname( __FILE__ ) + '/../helpers/url_helper'
+  include UrlHelper
 
 end
 

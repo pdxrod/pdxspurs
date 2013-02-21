@@ -12,11 +12,10 @@
   <b>comments</b>
   <div id="comments">
     <% @post.posts.each do |post| %>
-      <%= post.title %> <% post.short %> 
+      <%= post.title %><br/>
+      <%= post.long %><br/><br/>
     <% end %>
   </div>
 
 <% end %>
-
-
 
