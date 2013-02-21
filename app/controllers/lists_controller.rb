@@ -71,7 +71,7 @@ class ListsController < ApplicationController
 
     @list = current_user.lists.find(params[:id])
     respond_to do |format|
-      if @list.update_attributes(params[:list])
+      if @list.update_attributes( app_params )
 
         format.html { redirect_to(@list) }
         format.xml  { head :ok }
