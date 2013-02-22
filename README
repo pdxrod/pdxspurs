@@ -1,0 +1,5 @@
+This app runs on Rails edge commit b04c81d367323849a0019f6964639efaad0e9df0 Feb 17 12:53:21 2013 -0800
+
+A demo of a simple Rails app which enables people to join, log in, post messages, comment on messages, log out, and recover their passwords.
+
+

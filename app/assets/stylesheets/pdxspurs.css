@@ -1,0 +1,125 @@
+#notice {
+border: 2px solid red;
+padding: 1em;
+margin-bottom: 2em;
+background-color: #f0f0f0;
+font: bold smaller sans-serif;
+}
+
+body {
+font-family: Arial, Verdana, sans-serif;
+font-size: 13px;
+background-color: #ffffff;
+}
+
+#banner {
+}
+
+#banner img {
+}
+
+#columns {
+  background: #006699;
+}
+
+#main {
+width: 95%;
+margin-left: auto;
+margin-right: auto;
+padding-top:  1em;
+padding-left: 1em;
+background: white;
+border: 1px;
+border-width: 3px; 
+border-style: solid; 
+}
+
+#side {
+float: left;
+padding-top: 1em;
+padding-left: 1em;
+padding-bottom: 1em;
+width: 8em;
+background: #006699;
+color: #ffffff;
+font-size: 20px;
+}
+
+h1 {
+font: 100% sans-serif;
+color: #226;
+border-bottom: 3px dotted #77d;
+padding-bottom: 1em;
+}
+
+#pdxspurs-list .list-title {
+color: #244;
+}
+
+#pdxspurs-list .list-one-sheet {
+font-family: Arial, Verdana, sans-serif;
+font-size: x-small;
+width: 60px;
+height: 70px;
+}
+
+#pdxspurs-list .list-actions {
+font-size: x-small;
+text-align: right;
+padding-left: 1em;
+}
+
+#pdxspurs-list .list-line-even {
+background:  #FFFFFF; 
+}
+
+#pdxspurs-list .list-line-odd {
+background: #8FFFE4; 
+}
+
+#comments {
+padding-left: 5em;
+}
+
+#home-link {
+}
+
+A:link {text-decoration: underline;  color: #099F09; }
+A:visited {text-decoration: none;    color: #009909; } 
+A:active {text-decoration: none;     color: #909F90; }
+A:hover {text-decoration: underline; color: #496781; }
+
+table {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px;
+  border-width: 1px; 
+  border-style: solid; 
+}	
+		
+td {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+	
+fieldset {
+  border: 1px;
+  border-width: 1px; 
+  border-style: solid; 
+}	
+
+#blocked {
+  border: 1px;
+  border-width: 1px; 
+  border-style: solid; 
+}	
+
+#pagination {
+}
+
+#pagination.em {
+  font: small, sans-serif;
+}
+

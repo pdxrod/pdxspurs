@@ -1,0 +1,21 @@
+<b>title:</b> <%= @post.title %>
+<br/><br/>
+<b>message:</b><br/>
+<%= raw @post.message %>
+<br/><br/>
+
+<% if @post.post_id.nil? %>
+
+  <a href="<%= "/posts/new?l=#{ @post.list_id }&p=#{ @post.id }" %>"><%= COMMENT %></a>
+  <br/><br/>
+
+  <b>&nbsp;&nbsp;comments</b><br/>
+  <div id="comments">
+    <% @post.posts.reverse.each do |post| %>
+      <b><%= post.title %></b><br/>
+      <%= post.long %><br/><br/>
+    <% end %>
+  </div>
+
+<% end %>
+

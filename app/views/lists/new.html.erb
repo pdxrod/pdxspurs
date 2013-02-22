@@ -1,0 +1,16 @@
+<%= form_for(@list) do |f| %>
+<fieldset>
+  <p>
+    <b>title:</b><br />
+    <%= f.text_field :title, "maxlength" => TITLE_LENGTH %>
+  </p>
+  
+    <%= f.hidden_field :user_id %>
+  
+  <p>
+    <%= f.submit CREATE_BUTTON %>
+  </p>
+</fieldset>
+<% end %>
+
+
