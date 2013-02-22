@@ -14,7 +14,7 @@ end
 
 module ActionController
   class Base
-    def page_cache_directory
+    def Base.page_cache_directory
       Rails.public_path
     end
   end
