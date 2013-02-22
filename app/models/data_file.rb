@@ -9,24 +9,9 @@ NUMBER_OF_THE_BEAST = 0666
 
 class DataFile < ActiveRecord::Base
 
-  def self.create(original, poster)
-    path = File.join(ApplicationHelper::POSTERS, original)
-    file = File.open(path, File::RDONLY)    
-    sz = self.handle(path, file.read)    
-    if sz.size > 1
-      poster.image = original
-      poster.width = sz [0]
-      poster.height = sz[1]
-      poster.save!
-      return true
-    else
-      return false
-    end      
-  end
-
   def self.save(upload, post)
     original = upload['datafile'].original_filename
-    path = File.join(ApplicationHelper::DIR, original)
+    path = File.join(DIR, original)
     str = upload['datafile'].read
     flag = 'wb'
     File.open(path, flag) { |f| f.write(str) }
@@ -44,8 +29,8 @@ class DataFile < ActiveRecord::Base
   end
 
   def self.handle(filepath, contents)
-    if   contents.size < ApplicationHelper::MAX_FILE_SIZE  \
-     and contents.size > ApplicationHelper::MIN_FILE_SIZE  \
+    if   contents.size < MAX_FILE_SIZE  \
+     and contents.size > MIN_FILE_SIZE  \
      and filepath.downcase =~ /.jpg$|.jpeg$|.bmp$|.png$|.gif$/
       return self.size(filepath, contents) 
     else 

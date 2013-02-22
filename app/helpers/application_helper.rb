@@ -21,6 +21,11 @@ LONG_WORDS = "Not signed up: Email should look like an email address., Email can
              "is too short (minimum is 4 characters), Secret word - '' is not valid - try again" * 2
 MULTI_LINE = (LONG_WORDS.size.to_f / 2.8)
 
+DIR = 'public/data'
+MIN_FILE_SIZE = 16
+MAX_FILE_SIZE = 3571065
+MAX_TOTAL = ( MAX_FILE_SIZE * MIN_FILE_SIZE * 24 )
+
 ADD_BUTTON = " add "
 MESSAGE_ADD = "add message"
 ADD_MESSAGE = "add message to this thread"

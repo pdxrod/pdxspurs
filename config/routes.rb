@@ -8,6 +8,9 @@ Pdxspurs::Application.routes.draw do
   get    'logout' =>    'user_sessions#destroy', :as => :logout
   delete 'logout' =>    'user_sessions#destroy', :as => :logout
 
+  post   'upload/uploadfile' => "upload#uploadfile"  
+  get    'upload'            => "upload#uploadfile"  
+
 end
 
 
