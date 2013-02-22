@@ -49,7 +49,7 @@ class UploadController < ApplicationController
       entries = Dir.new(DIR).entries
       entries.each do |entry|
         path = File.join(DIR, entry)
-        if File.file?(path)
+        if File.file?(path) and (not (path =~ /\..*keep/))
           files << FileNamePair.new(path)
         end
       end

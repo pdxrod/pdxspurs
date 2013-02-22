@@ -46,12 +46,13 @@
 
   <a href="<%= "/posts/new?l=#{ @post.list_id }&p=#{ @post.id }" %>"><%= COMMENT %></a>
   <br/><br/>
-  
-  <% if @post.picture == '' %>
-    <a href="/upload/uploadfile?p=<%= @post.id.to_s %>">add picture</a>
-  <% else %>
-    <%= link_to 'change picture', {:controller =>'upload', :params=>{:p=>@post} } %>
-  <% end %>
+
+          <% if @post.picture == '' %>
+            <%= link_to 'add picture', {:controller =>'upload', :params=>{:p=>@post} } %>
+          <% else %>
+            <%= link_to 'change picture', {:controller =>'upload', :params=>{:p=>@post} } %>
+          <% end %> 
+
   <br/><br/>
 
   <b>&nbsp;&nbsp;comments</b><br/>

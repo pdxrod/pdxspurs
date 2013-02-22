@@ -10,7 +10,7 @@ Pdxspurs::Application.routes.draw do
 
   post   'upload/uploadfile' => "upload#uploadfile"  
   get    'upload/uploadfile' => "upload#uploadfile"  
-  get    'upload'            => "upload#uploadfile"  
+  get    'upload'            => "upload#index"  
 
 end
 
