@@ -7,15 +7,12 @@
        default_url_options[:host] = 'pdxspurs.com' 
        
        def password_reset_instructions( recipient )
-         Rails.logger.debug "Notifier: Notifier password reset instructions called"
          
 	 @account = recipient
          msg = edit_password_reset_url(recipient.perishable_token)  
-         msg = "Click here:\n" + msg
+         msg = "Click on this URL:\n" + msg
 
-	 Rails.logger.debug "Sending to #{recipient.login} Password reset instructions\n#{msg}\n" 
-	 
-	 mail(:to => recipient.login,
+	 mail(:to => recipient.email,
               :subject => "Password reset instructions",
               :body => msg) 
        end

@@ -47,7 +47,7 @@ class PasswordResetsController < ApplicationController
     
     else
 
-      @user = User.find_by_login(params[:email])  
+      @user = User.find_by_email(params[:email])  
       if @user  
         @user.deliver_password_reset_instructions!  
         flash[:notice] = "Instructions to reset your password have been emailed to you. " +  
