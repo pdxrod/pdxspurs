@@ -8,13 +8,17 @@ source 'http://rubygems.org'
 # brew link libxml2
 # gem install nokogiri -- --with-xml2-include=/usr/local/Cellar/libxml2/2.7.8/include/libxml2
 #   --with-xml2-lib=/usr/local/Cellar/libxml2/2.7.8/lib --with-xslt-dir=/usr/local/Cellar/libxslt/1.1.26
-
-gem 'rails',     path: ENV['RAILS_ROOT']  
-gem 'railties',  path: File.join( ENV['RAILS_ROOT'], 'railties' )
+if ENV['RAILS_ENV'] == 'production'
+  gem 'rails',     path: '../../edge'
+  gem 'railties',  path: File.join( '../../edge', 'railties' )
+else
+  gem 'rails',     path: ENV['RAILS_ROOT']  
+  gem 'railties',  path: File.join( ENV['RAILS_ROOT'], 'railties' )
+end
 gem 'journey',   github: 'rails/journey'
 gem 'arel',      github: 'rails/arel'
 # gem 'active_record_deprecated_finders', github: 'rails/active_record_deprecated_finders'
-# gem 'active_record_deprecated_finders',  github: 'markmcspadden/active_record_deprecated_finders'
+# gem 'active_record_deprecated_finders', github: 'markmcspadden/active_record_deprecated_finders'
 
 gem 'will_paginate', '~> 3.0'
 gem 'hpricot', '0.8.6'
