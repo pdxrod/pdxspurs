@@ -39,6 +39,11 @@ class User < ActiveRecord::Base
     true
   end
 
+  def deliver_password_reset_instructions!  
+    reset_perishable_token!  
+    Notifier.password_reset_instructions(self).deliver  
+  end  
+
   def name_display
     return '' if self.admin?
     name = email.dup.downcase

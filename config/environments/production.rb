@@ -67,3 +67,18 @@ Pdxspurs::Application.configure do
 
   config.eager_load = true
 end
+
+ActionMailer::Base.delivery_method = :smtp
+# For password reset instructions
+ActionMailer::Base.smtp_settings = {
+        :address => "localhost",
+        :port => 25,
+        :domain => "pdxspurs.com",
+        :enable_starttls_auto => false,
+        :authentication => :login,
+        :user_name => "no-reply@pdxspurs.com",
+        :password => "secret!"
+}
+
+
+
