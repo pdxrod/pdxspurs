@@ -12,6 +12,14 @@ module ActiveRecord
   end
 end
 
+module ActionController
+  class Base
+    def page_cache_directory
+      Rails.public_path
+    end
+  end
+end
+
 FLASH_SPAN = '<span style="color: #F94909; font-size: 15px;">'
 POSTS_LINK = '<div style="text-align: center;"><img src="/assets/spurs6.gif" /></div>'
 ENDOF_SPAN = '</span><br/>'
