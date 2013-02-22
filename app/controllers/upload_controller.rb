@@ -30,12 +30,12 @@ class UploadController < ApplicationController
       p = params["p"]
       post = Post.find(p.to_i) 
       if (current_user and (DataFile.save(params["upload"], post)))
-        redirect_to(:controller => '/posts', :action => p)
+        redirect_to( "/posts/#{ p }" )
       else
-        render :text => "There was a problem<br /><a href='/'>Home</a>"
+        render :text => "There was a problem<br /><a href='/'>home</a>"
       end
     rescue ActiveRecord::RecordNotFound
-      render :text => "We have an issue<br /><a href='/posts'>Back</a>"
+      render :text => "We have an issue<br /><a href='/posts'>back</a>"
     end
   end
 
