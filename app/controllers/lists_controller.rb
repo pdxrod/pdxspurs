@@ -2,10 +2,6 @@ class ListsController < ApplicationController
 
   before_filter :require_user
 
-  before_destroy { 
-   
-  }
-
   def index
 
     @lists = List.all.reverse
