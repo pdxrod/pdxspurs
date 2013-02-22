@@ -25,7 +25,7 @@ ADD_BUTTON = " add "
 MESSAGE_ADD = "add message"
 ADD_MESSAGE = "add message to this thread"
 COMMENT = "comment on this message"
-NEWS_TITLE = '<b>Football news from</b> <a href="http://www.guardian.co.uk/open-platform">the Guardian open platform Ruby API</a>'
+NEWS_TITLE = '<b>Football news from <a href="http://www.guardian.co.uk/open-platform">the Guardian open platform Ruby API</a></b>'
 LOGIN_BUTTON = " click to log in "
 SAVE_BUTTON = " save "
 CLICK_HERE = " click here "
@@ -197,6 +197,7 @@ def flash_format( notice )
   end
   size = 3 - ((flash.size / MULTI_LINE).to_i + 1)
   size = 1 if size < 1
+  size = 1 if flash == POSTS_LINK 
   flash += "<br/>\n" * (size - 1)
   flash
 end
