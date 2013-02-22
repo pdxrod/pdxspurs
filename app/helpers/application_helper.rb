@@ -21,7 +21,7 @@ module ActionController
 end
 
 FLASH_SPAN = '<span style="color: #F94909; font-size: 15px;">'
-POSTS_LINK = '<div style="text-align: center;"><img src="/assets/spurs6.gif" /></div>'
+POSTS_LINK = '<div style="text-align: center;"><img src="/images/spurs6.gif" /></div>'
 ENDOF_SPAN = '</span><br/>'
 LONG_WORDS = "Not signed up: Email should look like an email address., Email can't be blank, Email is invalid, " +
              "Password is too short (minimum is 4 characters), Password doesn't match confirmation, Password must " +
