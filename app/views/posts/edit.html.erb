@@ -12,16 +12,16 @@
                         } );                                                                                      
     </script>
 
-<p>
- <%= @post.picture %>
-</p>
-
 <%= form_for(@post) do |f| %>
 <fieldset>
   <p>
     <b><%= @post.post.nil?? '' : @post.post.title %></b><br/>
     <b>title:</b><br />
     <%= f.text_field :title, :value => @post.title %>
+  </p>
+
+  <p>
+    <%= raw @post.picture %>
   </p>
 
   <p>

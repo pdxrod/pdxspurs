@@ -1,13 +1,12 @@
 <b>title:</b> <%= @post.title %>
-<br/><br/>
+
+<p>
+ <%= raw @post.picture %>
+</p>
+
 <b>message:</b><br/>
 <%= raw @post.message %>
 <br/><br/>
-
-<p>
- <%= @post.picture %>
-</p>
-
 <% if @post.post_id.nil? %>
 
   <a href="<%= "/posts/new?l=#{ @post.list_id }&p=#{ @post.id }" %>"><%= COMMENT %></a>
