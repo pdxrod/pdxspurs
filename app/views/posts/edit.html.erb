@@ -12,6 +12,10 @@
                         } );                                                                                      
     </script>
 
+<p>
+ <%= @post.picture %>
+</p>
+
 <%= form_for(@post) do |f| %>
 <fieldset>
   <p>
@@ -42,9 +46,9 @@
 
   <a href="<%= "/posts/new?l=#{ @post.list_id }&p=#{ @post.id }" %>"><%= COMMENT %></a>
   <br/><br/>
-
+  
   <% if @post.picture == '' %>
-    <a href="/upload?p=<%= @post.id.to_s %>">add picture</a>
+    <a href="/upload/uploadfile?p=<%= @post.id.to_s %>">add picture</a>
   <% else %>
     <%= link_to 'change picture', {:controller =>'upload', :params=>{:p=>@post} } %>
   <% end %>

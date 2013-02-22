@@ -1,0 +1,11 @@
+<p>Use the Upload button to find an image file (jpg, gif or png) on your computer <br />
+to add to this message, then click Save</p>
+<% form_tag( { :action => "uploadfile", :params=>{:p=>params['p']} }, { :multipart => true } ) do -%>
+   
+    <%= file_field "upload", "datafile" %>
+    <%= submit_tag " Save " %><br />
+    <%= link_to 'Back', "posts/" + params['p'] %>
+
+<% end -%>
+
+

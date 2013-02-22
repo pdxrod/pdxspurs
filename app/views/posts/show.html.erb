@@ -4,19 +4,22 @@
 <%= raw @post.message %>
 <br/><br/>
 
+<p>
+ <%= @post.picture %>
+</p>
+
 <% if @post.post_id.nil? %>
 
   <a href="<%= "/posts/new?l=#{ @post.list_id }&p=#{ @post.id }" %>"><%= COMMENT %></a>
   <br/><br/>
 
   <% if @post.picture == '' %>
-    <a href="/upload?p=<%= @post.id.to_s %>">add picture</a>
+    <a href="/upload/uploadfile?p=<%= @post.id.to_s %>">add picture</a>
   <% else %>
     <%= link_to 'change picture', {:controller =>'upload', :params=>{:p=>@post} } %>
   <% end %>
   <br/><br/>
 
-  <br/><br/>
   <b>&nbsp;&nbsp;comments</b><br/>
   <div id="comments">
     <% @post.posts.reverse.each do |post| %>
