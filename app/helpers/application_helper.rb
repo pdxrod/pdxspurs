@@ -21,7 +21,7 @@ module ActionController
 end
 
 FLASH_SPAN = '<span style="color: #F94909; font-size: 15px;">'
-POSTS_LINK = '<div style="text-align: center;"><img src="/images/spurs6.gif" /></div>'
+POSTS_LINK = '<br/>'
 ENDOF_SPAN = '</span><br/>'
 LONG_WORDS = "Not signed up: Email should look like an email address., Email can't be blank, Email is invalid, " +
              "Password is too short (minimum is 4 characters), Password doesn't match confirmation, Password must " +
@@ -204,13 +204,12 @@ end
 def flash_format( notice )
   flash = notice
   if flash.blank?
-    flash = POSTS_LINK
+    flash = FLASH_SPAN + POSTS_LINK + ENDOF_SPAN
   else
-    flash = FLASH_SPAN + flash + ENDOF_SPAN
+    flash = FLASH_SPAN + flash + '<br/>' + ENDOF_SPAN
   end
   size = 3 - ((flash.size / MULTI_LINE).to_i + 1)
   size = 1 if size < 1
-  size = 1 if flash == POSTS_LINK 
   flash += "<br/>\n" * (size - 1)
   flash
 end

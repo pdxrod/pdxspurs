@@ -123,3 +123,12 @@ fieldset {
   font: small, sans-serif;
 }
 
+body
+{
+background-image:url('/images/spurs2.gif');
+background-color:#ffffff;
+background-repeat:no-repeat;
+background-position:center top;
+}
+
+
