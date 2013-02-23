@@ -14,10 +14,16 @@ describe "admin" do
 
     user = User.admin!
     user.admin?.should be_true
+    visit '/login'
+    fill_in "user_session_email", :with => user.email 
+    fill_in "user_session_password", :with => User::VALID_PASSWORD
+    click_button LOGIN_BUTTON
 
+    visit '/'
+    response.body.include?( '"/users">users' ).should be_true
     visit '/users'
-
-    
+    response.body.include?( user.email ).should be_true
+    response.body.include?( 'edit user' ).should be_true
 
   end
 
@@ -25,8 +31,16 @@ describe "admin" do
 
     user = User.last
     user.admin?.should be_false
+    visit '/login'
+    fill_in "user_session_email", :with => user.email 
+    fill_in "user_session_password", :with => User::VALID_PASSWORD
+    click_button LOGIN_BUTTON
 
-    visit '/users/new'
+    visit '/'
+    response.body.include?( '"/users">users' ).should be_false
+    visit '/users'
+    response.body.include?( user.email ).should be_false
+    response.body.include?( 'edit user' ).should be_false
 
   end
 
