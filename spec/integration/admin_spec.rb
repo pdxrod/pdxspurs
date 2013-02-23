@@ -44,5 +44,73 @@ describe "admin" do
 
   end
 
+  it "should only allow admin to delete a message, and its comments should get deleted too" do
+
+    user = User.last
+    user.admin?.should be_false
+    msg = random_message
+    3.times { msg += ' ' + FactoryGirl.generate( :word ) } 
+    title = random_message
+
+    visit '/login'
+    fill_in "user_session_email", :with => user.email 
+    fill_in "user_session_password", :with => User::VALID_PASSWORD
+    click_button LOGIN_BUTTON
+
+    visit '/lists'
+    click_link CREATE_THREAD
+    fill_in :list_title, :with => title
+    click_button CREATE_BUTTON
+    title.shuffle!
+
+    n = Post.count
+    visit '/lists'
+    click_link ADD_MESSAGE
+    fill_in 'post_title', :with => title
+    fill_in 'post_message', :with => msg
+    click_button CREATE_BUTTON
+    title.shuffle!
+    msg.shuffle!
+    visit '/lists'
+    click_link ADD_MESSAGE
+    fill_in 'post_title', :with => title
+    fill_in 'post_message', :with => msg
+    click_button CREATE_BUTTON
+    p = Post.last
+    p.user_id.should == user.id
+
+    visit '/posts'
+    response.body.include?( 'value="delete"' ).should be_false
+    click_link title
+    click_link COMMENT
+    title.shuffle!
+    msg = (User::LOWER + User::NUMBERS).shuffle
+    fill_in 'post_title', :with => title
+    fill_in 'post_message', :with => msg
+    click_button CREATE_BUTTON
+
+    Post.count.should == n + 3
+    n = Post.count 
+    posts = Post.find_all_by_user_id( user.id )
+    posts.size.should be > 2
+
+    c = Post.last
+    c.post_id.should == p.id
+    c.user_id.should == user.id
+    
+    visit '/logout'
+    admin = User.admin!
+    visit '/login'
+    fill_in "user_session_email", :with => admin.email 
+    fill_in "user_session_password", :with => User::VALID_PASSWORD
+    click_button LOGIN_BUTTON
+    until n == 0
+      visit '/posts'
+      click_button "delete"
+      n = Post.count
+    end # if this avoids an infinite loop, it means deleting a post deletes its comments
+     
+  end
+
 end
 

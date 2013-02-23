@@ -2,6 +2,11 @@ class Post < ActiveRecord::Base
 
   include ApplicationHelper
 
+  before_destroy {  
+    comments = Post.find_all_by_post_id( id )
+    comments.each { |comment| comment.delete }
+  }
+
   belongs_to :user
   belongs_to :list  
   has_many :posts
