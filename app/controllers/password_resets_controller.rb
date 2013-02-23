@@ -25,7 +25,7 @@ class PasswordResetsController < ApplicationController
     end
     @user.password = password
     @user.password_confirmation = password_confirmation
-    @user.secret_word = 'nvjiaq'
+    @user.secret_word = User::SECRET 
 
     if @user.save  
         flash[:notice] = "Password successfully updated"  
