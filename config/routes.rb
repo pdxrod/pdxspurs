@@ -11,8 +11,9 @@ Pdxspurs::Application.routes.draw do
   post   'upload/uploadfile' => "upload#uploadfile"  
   get    'upload'            => "upload#index"  
 
-  post 'password_resets/new' => "password_resets#new"
-  put  'password_resets/new' => "password_resets#new"
+  post 'password_resets/new'    => "password_resets#new"
+  put  'password_resets/new'    => "password_resets#new"
+  put  'password_resets/update' => "password_resets#update"
 
 end
 
