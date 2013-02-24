@@ -52,14 +52,17 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
-    old_password = params[ :user ][ :old_password ]
-    params[ :user ].delete :old_password
-    @user.errors.add( :password, " - old password must be filled in") if old_password.blank?
-    @user.errors.add( :password, " - old password is wrong") unless @user.valid_password?( old_password )
+    unless current_user.admin?
+      old_password = params[ :user ][ :old_password ]
+      params[ :user ].delete :old_password
+      @user.errors.add( :password, " - old password must be filled in") if old_password.blank?
+      @user.errors.add( :password, " - old password is wrong") unless @user.valid_password?( old_password )
+    end
+   
     params[:user][:secret_word] = User::SECRET
 
     respond_to do |format|
-      if @user.errors.empty? and @user.update_attributes(params[:user])
+      if @user.errors.empty? and @user.update_attributes(app_params)
         format.html { redirect_to :users, notice: 'Updated' }
         format.json { head :no_content }
       else

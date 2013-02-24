@@ -19,11 +19,11 @@
   <div class="field">
     <br/>
     <% if what == 'edit' %>
+      <% unless current_user.admin? %>
         <%= f.label :old_password %><br/>
-        <%= f.password_field :old_password %>
-       </div>
-       <div class="field">
-        <%= f.label :new_password %><br/>
+        <%= f.password_field :old_password %><br/>
+      <% end %>
+      <%= f.label :new_password %><br/>
     <% else %>
       <%= f.label :password %><br/>
     <% end %>
