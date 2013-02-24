@@ -18,11 +18,11 @@ class UserSessionsController < ApplicationController
 
     respond_to do |format|
       if @user_session.save
+        flash[:notice] = 'Logged in'
         format.html { redirect_to('/', :notice => 'Logged in') }
         format.xml  { render :xml => @user_session, :status => :created, :location => @user_session }
       else
-        errs = 'Not logged in - email or password invalid'
-        flash[:notice] = errs
+        flash[:notice] = 'Not logged in - email or password invalid'
         format.html { render :action => "new" }
         format.xml  { render :xml => @user_session.errors, :status => :unprocessable_entity }
       end
