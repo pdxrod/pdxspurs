@@ -12,18 +12,6 @@ require 'uri'
 
 class Guardian
   
-  # Formats date num_days ago: 'Sun Oct 05 10:00 2008' -> '20081005'
-  def Guardian.display_date(num_days)
-    t = Time.now - (num_days * ONE_DAY)
-    d = t.to_s
-    l = d.length
-    y = d[l-4..l-1]
-    d = d[8..9]
-    m = t.month.to_s
-    m = '0' + m if m.length < 2
-    y + m + d
-  end
-  
   def Guardian.results
         url = "http://content.guardianapis.com/search?q=Tottenham&page-size=#{PAGE_SIZE}&format=json&api-key=" +
          ApplicationController::GUARDIAN_API_KEY
