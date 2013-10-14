@@ -10,7 +10,7 @@ describe "authentication" do
       create_user email
     end
 
-    visit '/logout'
+    visit '/logoff'
   end
 
   it "should register new user using any of the captcha words but not otherwise" do
@@ -26,7 +26,7 @@ describe "authentication" do
   end
 
   it "should not register new user with invalid password" do
-    visit '/logout'
+    visit '/logoff'
 
     user = FactoryGirl.build :user
 
@@ -43,7 +43,7 @@ describe "authentication" do
   end
 
   it "should not register new user without matching password & confirmation" do
-    visit '/logout'
+    visit '/logoff'
 
     user = FactoryGirl.build :user
 
@@ -60,7 +60,7 @@ describe "authentication" do
   end
 
   it "should not register new user with invalid email" do
-    visit '/logout'
+    visit '/logoff'
 
     n = User.count
 

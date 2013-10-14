@@ -7,7 +7,7 @@ describe "messages" do
     2.times { FactoryGirl.create :list }
     email = 'me' + Time.now.to_f.to_s.gsub( '.', 'z' ) + '@pdxspurs.com'
     create_user email
-    visit '/logout'
+    visit '/logoff'
   end
 
   it "should allow user to add a thread" do
@@ -139,7 +139,7 @@ describe "messages" do
     parent.title.should == title
     response.body.include?( title ).should be_true
     response.body.include?( word ).should be_true
-    visit '/logout'
+    visit '/logoff'
  
     visit '/login'
     fill_in "user_session_email", :with => other.email 

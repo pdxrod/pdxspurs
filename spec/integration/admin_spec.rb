@@ -6,7 +6,7 @@ describe "admin" do
     1.times { FactoryGirl.create :admin}
     2.times { FactoryGirl.create :user }
     3.times { FactoryGirl.create :list }
-    visit '/logout'
+    visit '/logoff'
   end
 
 # This is an answer to the theological problem of the contradiction of omnipotence.
@@ -98,7 +98,7 @@ describe "admin" do
     c.post_id.should == p.id
     c.user_id.should == user.id
     
-    visit '/logout'
+    visit '/logoff'
     admin = User.admin!
     visit '/login'
     fill_in "user_session_email", :with => admin.email 

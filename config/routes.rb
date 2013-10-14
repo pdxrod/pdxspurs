@@ -5,6 +5,7 @@ Pdxspurs::Application.routes.draw do
   root :to =>           'main#index'
   
   get    'login' =>     'user_sessions#new',     :as => :login
+  get    'logoff' =>    'user_sessions#logoff',  :as => :logoff
   delete 'logout' =>    'user_sessions#destroy', :as => :logout
 
   post   'upload/uploadfile' => "upload#uploadfile"  

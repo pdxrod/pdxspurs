@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "home" do
 
   it "should see news on home page when not logged in" do
-    visit '/logout'  
+    visit '/logoff'  
     get '/'
     response.body.include?( NEWS_TITLE ).should be_true
   end

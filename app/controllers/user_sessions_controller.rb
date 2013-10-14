@@ -1,7 +1,7 @@
 class UserSessionsController < ApplicationController
 
   before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :only => :destroy
+  before_filter :require_user, :only => [:logoff, :destroy]
   before_filter :require_admin, :only => :index
 
   def new
@@ -37,6 +37,10 @@ class UserSessionsController < ApplicationController
       format.html { redirect_to('/', :notice => '') }
       format.xml  { head :ok }
     end
+  end
+
+  def logoff
+    destroy
   end
 
 end

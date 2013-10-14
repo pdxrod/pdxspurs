@@ -33,7 +33,7 @@ def create_user( email )
 end
 
 def register_user( word, num, success_wanted ) # Does successful and unsuccessful new user registrations
-  visit '/logout'
+  visit '/logoff'
   n = User.count
   user = FactoryGirl.build :user
   User.count.should == n
@@ -63,7 +63,7 @@ def register_user( word, num, success_wanted ) # Does successful and unsuccessfu
 end
 
 def sign_up_user( *users )
-  visit '/logout'
+  visit '/logoff'
   if users.size > 0
     user = users[ 0 ]
   else
