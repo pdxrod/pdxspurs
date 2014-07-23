@@ -13,7 +13,7 @@ require 'uri'
 class Guardian
   
   def Guardian.results
-        url = "http://content.guardianapis.com/search?q=Tottenham&page-size=#{PAGE_SIZE}&format=json&api-key=" +
+        url = "http://beta.content.guardianapis.com/search?q=Tottenham&page-size=#{PAGE_SIZE}&format=json&api-key=" +
          ApplicationController::GUARDIAN_API_KEY
 
 	uri = URI.parse(url)

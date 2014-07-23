@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user_session, :current_user
 
-  GUARDIAN_API_KEY = 'djpscrgpj5bcvse97bkbnhxv'
+  GUARDIAN_API_KEY = 'rng66v78kgprc99ufykervdh' # 'djpscrgpj5bcvse97bkbnhxv'
 
   def require_admin
     flash[ :notice ] = '' 
