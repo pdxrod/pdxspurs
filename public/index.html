@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>Git man page generator</title>
+    <link rel="stylesheet" href="static/css/main.css?__inline=true" type="text/css">
+  </head>
+  <body>
+    <div class="disclaimer"></div>
+    <header>
+      <h1>
+        <Git>man page generator</Git>
+      </h1>
+      <ul id="actions">
+        <li><a id="permalink" href="#">Permalink</a></li>
+        <li>
+          <button id="refresh">Generate new man page</button>
+        </li>
+      </ul>
+    </header>
+    <section id="contents">
+      <h1>Name</h1>
+      <div class="block">
+        <div id="name"><span class="command-name"></span><span class="command-action"></span></div>
+      </div>
+      <h1>Synopsis</h1>
+      <div class="block">
+        <div id="synopsis"><span class="command-name"></span><span class="command-arguments"></span></div>
+      </div>
+      <h1>Description</h1>
+      <div class="block">
+        <div id="description">
+          <p class="command-description"></p>
+          <div class="contents"></div>
+        </div>
+      </div>
+      <h1>Options</h1>
+      <div class="block">
+        <dl id="options"></dl>
+      </div>
+      <h1>See also</h1>
+      <div class="block">
+        <ul id="see-also"></ul>
+      </div>
+    </section>
+    <footer>
+      <p>Based on the Git Manual page created by <a href="https://github.com/Lokaltog">Lokaltog</a> - <a href="https://github.com/Lokaltog/baba-git-man-page-generator">GitHub repo</a>
+      </p>
+    </footer>
+  </body>
+  <script src="static/js/main.js?__inline=true"></script>
+</html>
